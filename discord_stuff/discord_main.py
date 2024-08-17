@@ -6,35 +6,36 @@ from discord.ext import commands, tasks
 import dotenv
 import os
 # ----------------------------------------------
-from database.messages.disc_messages import add_message
-from database.messages.disc_messages import remove_old_data
+from database.messages.disc_messages import add_message, context_messages
 from database.xp import xp_calculator, level_calculator, xp_check
 from discord_stuff.responses import test_responses, quack_responses
 from discord_stuff.code_generator import code_generator
 from duck_log.logger import logger, report_log, error_log
+from duckgpt.chat_gpt_api import response_getter
 # ----------------------------------------------
 
 
 # Load environment variables-----
 dotenv.load_dotenv()
 # -------------------------------
-
-
-user_input = input("\nWould you like to start as Production? (y/N): ")
-if user_input == "y":
-    GUILD_ID = 1104991679716532233
-    JTC_VC_ID = 1267181492656930916
-    TOKEN = os.getenv("MAIN_TOKEN")
-else:
-    TOKEN = os.getenv("TOKEN")
-    GUILD_ID = 993318419258691635
-    JTC_VC_ID = 1269409554890756157
+# Production
+# GUILD_ID = 1104991679716532233
+# JTC_VC_ID = 1267181492656930916
+# TOKEN = os.getenv("MAIN_TOKEN")
+# -------------------------------
+# Development
+TOKEN = os.getenv("TOKEN")
+GUILD_ID = 993318419258691635
+JTC_VC_ID = 1269409554890756157
+# -------------------------------
 
 # -------------------------------
 OWNER_ID = 927778433856061501
 BITRATE = 64000
 # --------------------------------
 # Variables ----------------------
+loop_timer_hour = 1
+msg_count = 0
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -120,10 +121,14 @@ to use this command")
             userlimit = 10
             await channel.edit(user_limit=userlimit)
             await channel.edit(name=name)
+            await inter.response.send_message(f"Channel name changed to {name}\
+ and user limit set to {userlimit}")
 
         else:
             await channel.edit(user_limit=userlimit)
             await channel.edit(name=name)
+            await inter.response.send_message(f"Channel name changed to {name}\
+ and user limit set to {userlimit}")
 
 
 @tree.command(name="clear", description="Deletes the channel and \
@@ -216,6 +221,7 @@ async def on_ready():
     print(f'Successfully synced {len(synced_commands)} commands')
 
     check_empty_voice_channels.start()
+    daily_msg_count.start()
 
 
 @bot.event
@@ -254,9 +260,13 @@ async def check_empty_voice_channels():
                 logger(f'Empty VC: {channel.name} was deleted')
 
 
+@tasks.loop(hours=loop_timer_hour)
+async def daily_msg_count():
+    context_messages(loop_timer_hour)
+
+
 @bot.event
 async def on_message(message):
-    remove_old_data()
     add_message(message.content, message.author.name,
                 message.author.id, message.created_at)
 
@@ -271,14 +281,8 @@ async def on_message(message):
             await message.channel.send(f"{message.author.name} is now level \
 {level}")
 
-        if "ping" in message.content.lower():
-            await message.channel.send("pong")
-
-        if "test" in message.content.lower():
-            await message.channel.send(test_responses())
-
         if "quack" in message.content.lower():
-            await message.channel.send(quack_responses())
+            await message.channel.send(response_getter())
 
 
 def run():

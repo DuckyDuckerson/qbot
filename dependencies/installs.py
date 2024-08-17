@@ -5,4 +5,5 @@ def installation():
     print("Installing dependencies...")
     pip_install('discord')
     pip_install('python-dotenv')
+    pip_install('openai')
     print("Dependencies installed.")

@@ -12,11 +12,8 @@ level_check = {}
 
 
 def xp_calculator(message, author_id):
-
     author_id_str = str(author_id)
-
     modifer = (len(message) * 0.5)
-
     xp = len(message) * modifer
 
     if author_id_str in user_xps:
@@ -32,12 +29,12 @@ def xp_calculator(message, author_id):
 
 
 def level_calculator(author_id):
-
+    divider = 10000
     author_id_str = str(author_id)
 
     if author_id_str in user_xps:
         xp = user_xps[author_id_str]
-        level = (xp // 100000) + 1
+        level = (xp // divider) + 1
 
     else:
         level = 1

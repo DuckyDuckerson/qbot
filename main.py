@@ -3,6 +3,9 @@ from dependencies.installs import installation
 
 ''' To Do:
 - Integrate ChatGPT
+- add a tech support command,
+- it will send the message to ChatGPT
+- ChatGPT will respond with a message
 - Add a way to play music in VCs
 - Add real databases for storing data
 - Add currency system

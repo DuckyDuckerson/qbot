@@ -1,4 +1,4 @@
 FROM python:3.12.4
-WORKDIR /app
-COPY . /app
+WORKDIR /qbot
+COPY . /qbot
 CMD ["python", "main.py"]

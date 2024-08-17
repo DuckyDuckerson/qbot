@@ -1,2 +1,0 @@
-# qbot
-Discord Bot

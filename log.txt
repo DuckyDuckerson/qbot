@@ -1,0 +1,49 @@
+Bot was started 1723581096.5662694
+User: duckyduckerson used the command "level" to get duckyduckerson's level
+User: duckyduckerson used the command "level" to get duckyduckerson's level
+User: duckyduckerson used the command "level" to get duckyduckerson's level
+Bot was started 1723584237.3033562
+Average messages per hour: context:20
+Bot was started 1723584352.946666
+Average messages per hour: context:20
+Bot was started 1723601248.1416252
+Average messages per hour: context:20
+Bot was started 1723601498.7304153
+Average messages per hour: context:20
+Bot was started 1723601732.9323702
+Average messages per hour: context:20
+Bot was started 1723601873.131563
+Average messages per hour: context:20
+Bot was started 1723603286.1302788
+Average messages per hour: context:20
+Bot was started 1723603365.3007839
+Average messages per hour: context:20
+Bot was started 1723603466.8560135
+Average messages per hour: context:20
+Bot was started 1723603500.7766724
+Average messages per hour: context:20
+Bot was started 1723603558.668079
+Average messages per hour: context:20
+Bot was started 1723603691.2444146
+Average messages per hour: context:20
+Bot was started 1723603837.9780529
+Average messages per hour: context:20
+Bot was started 1723606387.1975021
+Average messages per hour: context:20
+Bot was started 1723606648.1629212
+Average messages per hour: context:20
+Bot was started 1723783476.262363
+Average messages per hour: context:20
+Bot was started 1723783749.858989
+Average messages per hour: context:20
+Bot was started 1723785029.845563
+Average messages per hour: context:20
+Bot was started 1723785337.875908
+Average messages per hour: context:20
+Bot was started 1723785440.0782278
+Average messages per hour: context:20
+Bot was started 1723785744.7488303
+Average messages per hour: context:20
+User: duckyduckerson used the command "clear" to delete and recreate the channel
+Bot was started 1723786272.648233
+Average messages per hour: context:20
