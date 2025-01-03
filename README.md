@@ -5,8 +5,7 @@ Quack is a simple bot that bullies users, creates voice chats and keeps track of
 
 To run the bot you need to 
 - Make sure you have docker installed and running on your machine.
-- Create a .env in the discord_stuff directory with the TOKEN variable set to your discord bot token.
-- Create a .env in the duckgpt directory with the api_key variable set to your chatgpt token.
+### If you have other docker containers running on the same machine this script will stop them. So be careful.
 - Then just run the runme.sh script and the bot will start.
 
 I have the bot running on a raspberry pi 4 with 4gb of ram and it works fine. I have also tested it on a macOS machine and it works fine there too. **Not sure about windows.**
