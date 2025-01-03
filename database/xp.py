@@ -1,4 +1,8 @@
 import json
+import ctypes
+
+lib = ctypes.CDLL('./functions/cfuncs.so')
+lib.xp_alg.argtypes = [ctypes.c_char_p]
 
 try:
     with open('user_xps.json', 'r') as file:
@@ -13,8 +17,8 @@ level_check = {}
 
 def xp_calculator(message, author_id):
     author_id_str = str(author_id)
-    modifer = (len(message) * 0.5)
-    xp = len(message) * modifer
+
+    xp = lib.xp_alg(message.encode('utf-8'))
 
     if author_id_str in user_xps:
         old_xp = user_xps[author_id_str]
@@ -28,32 +32,30 @@ def xp_calculator(message, author_id):
         json.dump(user_xps, file)
 
 
-def level_calculator(author_id):
-    divider = 10000
+def xp_to_file(author_id):
     author_id_str = str(author_id)
 
     if author_id_str in user_xps:
         xp = user_xps[author_id_str]
-        level = (xp // divider) + 1
 
     else:
-        level = 1
+        xp = 0
 
-    return level
+    return xp
 
 
 def xp_check(author_id, author_name):
     author_id_str = str(author_id)
 
     if author_id_str in level_check:
-        old_level = level_check[author_id_str]
-        new_level = level_calculator(author_id)
+        old_level = level_check[author_id_str] + 1000
+        new_level = xp_to_file(author_id)
 
         if new_level > old_level:
             level_check.update({author_id_str: new_level})
             return True
 
     else:
-        level = level_calculator(author_id)
+        level = xp_to_file(author_id)
         level_check.update({author_id_str: level})
         return False

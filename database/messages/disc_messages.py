@@ -19,39 +19,42 @@ def list_pop():
 
 
 def context_messages(time):
-    total = 0
-
-    msg_count.append(int(len(messages)))
-
-    for idx, i in enumerate(msg_count):
-        total += i
-    msg_avg = total / len(msg_count)
-
-    if msg_avg < context:
-
-        if len(messages) > context:
-            list_pop()
-
-        logger(f"Average messages per hour: context:{context}")
-        return context
-
-    elif msg_avg > context:
-
-        if len(messages) > context:
-            list_pop()
-        msg_count.clear()
-
-        if msg_avg > 2 * context:
-
-            msv_timeavg = msg_avg / time
-            if msv_timeavg < context:
-                return context
-
-            logger(f"Average messages per hour: {int(msv_timeavg)}")
-            return int(msv_timeavg)
-
-        logger(f"Average messages per hour: {int(msg_avg)}")
-        return int(msg_avg)
+    context = 50
+    return context
+#    total = 0
+#
+#    msg_count.append(int(len(messages)))
+#
+#    for idx, i in enumerate(msg_count):
+#        total += i
+#    msg_avg = total / len(msg_count)
+#
+#    if msg_avg < context:
+#
+#        if len(messages) > context:
+#            list_pop()
+#
+#        logger(f"Average messages per hour: context:{context}")
+#        return context
+#
+#    elif msg_avg > context:
+#
+#        if len(messages) > context:
+#            list_pop()
+#        msg_count.clear()
+#
+#        if msg_avg > (2 * context):
+#
+#            msv_timeavg = (msg_avg / time)
+#            if msv_timeavg < context:
+#                logger(f"Average messages per hour: {context}")
+#                return context
+#
+#            logger(f"Average messages per hour: {int(msv_timeavg)}")
+#            return int(msv_timeavg)
+#
+#        logger(f"Average messages per hour: {int(msg_avg)}")
+#        return int(msg_avg)
 
 
 def add_message(message, user_name, user_id, time_stamp):

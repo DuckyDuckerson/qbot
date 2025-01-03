@@ -6,4 +6,5 @@ def installation():
     pip_install('discord')
     pip_install('python-dotenv')
     pip_install('openai')
+    pip_install('python-ffmpeg')
     print("Dependencies installed.")
