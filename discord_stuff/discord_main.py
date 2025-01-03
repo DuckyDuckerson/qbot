@@ -62,7 +62,7 @@ async def vc_maker(inter: discord.Interaction, allow_users: discord.User):
     category = discord.utils.get(guild.categories, id=channel.category_id)
     guild = inter.guild
     user = inter.user
-overwrites = {
+    overwrites = {
         guild.default_role: discord.PermissionOverwrite(view_channel=False),
         user: discord.PermissionOverwrite(view_channel=True),
         allow_users: discord.PermissionOverwrite(view_channel=True)
