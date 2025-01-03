@@ -4,6 +4,7 @@ if [ ! -f discord_stuff/.env ]; then
     echo "Paste your Discord Bot token here: "
     read discord_token
     echo 'TOKEN="$token"' >> discord_stuff/.env
+fi
 
 if [ ! -f duckgpt/.env ]; then
     echo "Creating .env file"
@@ -11,6 +12,7 @@ if [ ! -f duckgpt/.env ]; then
     echo "Paste your Chatgpt token here: "
     read chatgpt_token
     echo 'api_key="$token"' >> duckgpt/.env
+fi
 
 docker ps -aq | xargs docker stop | xargs docker rm
 docker build -t qbot .
