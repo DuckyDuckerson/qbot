@@ -19,7 +19,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = 1324576865775779921
+JTC_VC_ID = 1324581142757900359
 OWNER_ID = 927778433856061501
 SYSTEM_FEED = 1105068687062470666
 BITRATE = 64000
