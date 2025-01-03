@@ -19,9 +19,9 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = os.getenv("JTC_VC_ID")
-OWNER_ID = os.getenv("OWNER_ID")
-SYSTEM_FEED = os.getenv("SYSTEM_FEED")
+JTC_VC_ID = 1324576865775779921
+OWNER_ID = 927778433856061501
+SYSTEM_FEED = 1105068687062470666
 BITRATE = 64000
 # -------------------------------
 
@@ -336,10 +336,6 @@ async def on_message(message):
 
 # Run the bot --------------------------------------------------------------
 def run():
-    print("Running bot...")
-    print(f"Join to Create VC ID:{JTC_VC_ID}")
-    print(f"Owner ID: {OWNER_ID}")
-    print(f"System Feed ID: {SYSTEM_FEED}")
     if TOKEN:
         bot.run(TOKEN)
     else:
