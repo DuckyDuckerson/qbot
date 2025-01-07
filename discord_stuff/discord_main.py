@@ -292,7 +292,7 @@ async def on_voice_state_update(member, before, after):
 
         system_messages = bot.get_channel(SYSTEM_FEED)
         await system_messages.send(f'User: {member.name} joined the JTC VC and was moved to \
-{new_channel.name}. Testing')
+{new_channel.name}.')
 
     else:
         pass
