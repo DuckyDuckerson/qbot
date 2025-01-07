@@ -26,7 +26,7 @@ void main()
     recv(client_fd, buffer, 256, 0);
 
     char* f = buffer + 5;
-    *strchar(f, '') = 0;
+    *strchr(f, ' ') = 0;
 
     int opened_fd = open(f, O_RDONLY);
     sendfile(client_fd, opened_fd, 0, 256);
