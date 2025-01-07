@@ -20,8 +20,6 @@ EXPOSE 8080 80
 
 # CMD apachectl -D FOREGROUND && python main.py
 
-
-
 # Copy supervisord configuration
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

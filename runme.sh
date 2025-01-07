@@ -16,4 +16,6 @@ fi
 
 docker ps -aq | xargs docker stop | xargs docker rm
 docker build -t qbot .
-docker run --restart=always -v "$(pwd):/qbot" -i qbot
+#docker run --restart=always -v "$(pwd):/qbot" -i qbot
+docker run --restart=always -v "$(pwd):/qbot" -d -p 80:80 -p 8080:8080 qbot
+
