@@ -14,7 +14,7 @@ RUN echo '<Directory /qbot/public>' > /etc/apache2/sites-available/000-default.c
     && echo '    Require all granted' >> /etc/apache2/sites-available/000-default.conf \
     && echo '</Directory>' >> /etc/apache2/sites-available/000-default.conf
 
-EXPOSE 80
+EXPOSE 8080
 
 # CMD ["python", "main.py" ]
 
