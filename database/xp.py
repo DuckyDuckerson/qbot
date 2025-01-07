@@ -59,3 +59,9 @@ def xp_check(author_id, author_name):
         level = xp_to_file(author_id)
         level_check.update({author_id_str: level})
         return False
+
+
+def rank_check(author_id):
+    sorted_users = sorted(user_xps.items(), key=lambda x: x[1], reverse=True)
+
+    return sorted_users.index((str(author_id), user_xps[str(author_id)])) + 1
