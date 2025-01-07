@@ -9,7 +9,8 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /qbot
 COPY . /qbot
 
-RUN echo '<Directory /qbot/public>' > /etc/apache2/sites-available/000-default.conf \
+RUN echo 'DocumentRoot /qbot/public' > /etc/apache2/sites-available/000-default.conf \
+    && echo '<Directory /qbot/public>' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    Options Indexes FollowSymLinks' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    AllowOverride All' >> /etc/apache2/sites-available/000-default.conf \
     && echo '    Require all granted' >> /etc/apache2/sites-available/000-default.conf \
