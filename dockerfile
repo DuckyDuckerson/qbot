@@ -16,6 +16,6 @@ RUN echo '<Directory /qbot/public>' > /etc/apache2/sites-available/000-default.c
 
 EXPOSE 8080
 
-CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
+# CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
 
-# CMD apachetl -D FOREGROUND && python main.py
+CMD apachetl -D FOREGROUND && python main.py
