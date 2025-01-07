@@ -3,7 +3,7 @@ FROM python:3.12.4
 RUN apt-get update && apt-get install -y \
     apache2 \
     libapache2-mod-wsgi-py3 \
-    && apt-get install supervisor \
+    apt-get install supervisor \
     && apt-get clean
 
 WORKDIR /qbot
