@@ -18,4 +18,4 @@ EXPOSE 8080
 
 # CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
 
-CMD apachetl -D FOREGROUND && python main.py
+CMD apachectl -D FOREGROUND && python main.py
