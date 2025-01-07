@@ -14,8 +14,16 @@ RUN echo '<Directory /qbot/public>' > /etc/apache2/sites-available/000-default.c
     && echo '    Require all granted' >> /etc/apache2/sites-available/000-default.conf \
     && echo '</Directory>' >> /etc/apache2/sites-available/000-default.conf
 
-EXPOSE 8080
+EXPOSE 8080 80
 
 # CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
 
-CMD apachectl -D FOREGROUND && python main.py
+# CMD apachectl -D FOREGROUND && python main.py
+
+
+
+# Copy supervisord configuration
+COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Use supervisord to run both Apache and the Python bot
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
