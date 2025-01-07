@@ -75,6 +75,24 @@ async def vc_maker(inter: discord.Interaction, allow_users: discord.User):
 # ----------------------------------------------------------------------------
 
 
+# Rank Check Command ------------------------------------------------------------
+@tree.command(name="rank", description="Gets the top 5 users.")
+async def rank(inter: discord.Interaction):
+    system_messages = bot.get_channel(SYSTEM_FEED)
+    await system_messages.send(f"User: {inter.user.name} used the command 'rank' to get the top 5 users")
+
+    sorted_users = sorted(xp_to_file.items(), key=lambda x: x[1], reverse=True)
+    top_5 = sorted_users[:5]
+
+    rank_message = "Top 5 Users:\n"
+    for i, (user_id, xp) in enumerate(top_5):
+        user = await bot.fetch_user(int(user_id))
+        rank_message += f"{i + 1}. {user.name}: {xp}xp\n"
+
+    await inter.response.send_message(rank_message, ephemeral=True)
+# ---------------------------------------------------------------------------
+
+
 # VC Permissions Command -----------------------------------------------------
 @tree.command(name="vcperms", description="Adds a user to a voice channel.")
 async def vc_perms(inter: discord.Interaction, channel: discord.VoiceChannel,
