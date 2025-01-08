@@ -94,7 +94,7 @@
             bottom: 20px;
             right: 20px;
             width: 400px;
-            max-height: 300px;
+            max-height: 600px;
             background-color: #24292f;
             color: #00ff00;
             border-radius: 8px;
@@ -271,7 +271,9 @@
             } else if (input === 'clear') {
                 chatOutput.innerHTML = '';
                 return;
-            } else {
+            } else if (input === 'neofetch', input === 'fastfetch', input === 'btw') {
+                response = 'OS: Arch Linux\nHardware: Ryzen 7 5800x, RTX 3060\nUptime: 420 days, 69 hours, 69 minutes\nShell: zsh\nEditor: nvim\nDesktop: i3wm\nTerminal: alacritty\nLanguage: Python, Bash, C, HTML, CSS, Javascript, Rust, Lua' ;
+            else {
                 response = `Command '${input}' not recognized. Try typing 'help' for options.`;
             }
 
