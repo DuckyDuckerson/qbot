@@ -20,9 +20,6 @@ def main():
     Yes I know this is inefficient, but it's how I have it set up.
     so shutup lol.
     '''
-    print('Compiling C code...')
-    subprocess.run(['gcc', '-shared', '-o', 'functions/cfuncs.so', 'functions/cfuncs.c'])
-    print('C code compiled successfully!')
 
     installation()
 
@@ -33,4 +30,16 @@ def main():
 
 
 if __name__ == "__main__":
+
+    try:
+        # ----------------------------------
+        print('Compiling C code...')
+        subprocess.run(['gcc', '-shared', '-o', 'functions/cfuncs.so', 'functions/cfuncs.c'])
+        print('C code compiled successfully!')
+        # ----------------------------------
+
+    except subprocess.CalledProcessError as e:
+        print(f'Error: {e}')
+        exit()
+
     main()
