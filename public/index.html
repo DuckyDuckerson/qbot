@@ -210,6 +210,9 @@
                 response = 'View my projects on GitHub: https://github.com/DuckyDuckerson';
             } else if (input === 'contact') {
                 response = 'Email me at: James@itslit.bet';
+            } else if (input === 'clear') {
+                chatOutput.innerHTML = '';
+                return;
             } else {
                 response = `Command '${input}' not recognized. Try typing 'help' for options.`;
             }
