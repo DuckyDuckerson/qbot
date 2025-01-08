@@ -1,58 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyberpunk Terminal Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: black;
-      color: #00ff00;
-      font-family: 'VT323', monospace;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    #terminal {
-      padding: 20px;
-      white-space: pre;
-    }
-    #input-line {
-      display: inline-block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showcase of my GitHub profile and projects">
+    <meta name="author" content="Your Name">
+    <title>ITSLIT.BET</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background-color: #24292f;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .intro h2 {
+            font-size: 1.8em;
+        }
+        .intro p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .project {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .project h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .project p {
+            font-size: 1.1em;
+            color: #555;
+        }
+        .project a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #24292f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .project a:hover {
+            background-color: #0366d6;
+        }
+        footer {
+            background-color: #24292f;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div id="terminal">
-    <div id="output">user@cybernet:~$ </div>
-    <div id="input-line">
-      <span id="cursor">|</span>
-      <input type="text" id="command" autofocus>
-    </div>
-  </div>
-  
-  <script>
-    const commandInput = document.getElementById('command');
-    const outputDiv = document.getElementById('output');
-    
-    commandInput.addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        let command = commandInput.value;
-        outputDiv.innerHTML += `\nuser@cybernet:~$ ${command}\n`;
+    <header>
+        <h1>Its Lit!</h1>
+        <p>Welcome to ITSLIT.BET</p>
+    </header>
 
-        if (command === 'help') {
-          outputDiv.innerHTML += 'Available commands: help, about, projects, contact\n';
-        } else if (command === 'about') {
-          outputDiv.innerHTML += 'Name: John Doe\nOccupation: Web Developer\nSkills: HTML, CSS, JavaScript\n';
-        } else {
-          outputDiv.innerHTML += `command not found: ${command}\n`;
-        }
+    <main>
+        <section class="intro">
+            <h2>About Me</h2>
+            <p>Hello! My name is James! Check out my work on GitHub!</p>
+        </section>
 
-        commandInput.value = '';  // clear input field
-      }
-    });
-  </script>
+        <section class="projects">
+            <h2>Featured Projects</h2>
+            <div class="project-list">
+                <div class="project">
+                    <h3>QuackBot</h3>
+                    <p>Quack Bot is a discord bot that runs my discord and deploys a website.</p>
+                    <a href="https://github.com/DuckyDuckerson/qbot.git" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project">
+                    <h3>TypeWriter</h3>
+                    <a href="https://github.com/DuckyDuckerson/typewriter.git" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project">
+                    <h3>UserVol</h3>
+                    <a href="https://github.com/DuckyDuckerson/UserVol.git" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Connect with me:</p>
+        <a href="https://github.com/DuckyDuckerson" target="_blank">GitHub</a> | 
+        <a href="mailto:James@itslit.bet">Email</a>
+    </footer>
 </body>
 </html>
-
