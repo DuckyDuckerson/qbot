@@ -34,7 +34,7 @@ if __name__ == "__main__":
     try:
         # ----------------------------------
         print('Compiling C code...')
-        subprocess.run(['gcc', '-shared', '-o', 'functions/cfuncs.so', 'functions/cfuncs.c'])
+        subprocess.run(['gcc', '-shared', '-fPIC', '-o', 'functions/cfuncs.so', 'functions/cfuncs.c'])
         print('C code compiled successfully!')
         # ----------------------------------
 
