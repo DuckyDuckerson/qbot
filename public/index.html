@@ -87,6 +87,61 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Terminal chat box styles */
+        #terminal-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            max-height: 300px;
+            background-color: #24292f;
+            color: #00ff00;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #terminal-chat .chat-output {
+            overflow-y: auto;
+            flex-grow: 1;
+            margin-bottom: 10px;
+            max-height: 200px;
+            white-space: pre-wrap;
+        }
+
+        #terminal-chat .chat-input {
+            display: flex;
+        }
+
+        #terminal-chat input {
+            flex-grow: 1;
+            background-color: #1e2125;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            border-radius: 4px;
+        }
+
+        #terminal-chat button {
+            background-color: #0366d6;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #terminal-chat button:hover {
+            background-color: #0288d1;
+        }
+
     </style>
 </head>
 <body>
@@ -126,5 +181,62 @@
         <a href="https://github.com/DuckyDuckerson" target="_blank">GitHub</a> | 
         <a href="mailto:James@itslit.bet">Email</a>
     </footer>
+
+    <!-- Terminal Chat Box -->
+    <div id="terminal-chat">
+        <div class="chat-output" id="chat-output">
+            Welcome to the terminal! Type a command.
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Enter command...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatOutput = document.getElementById('chat-output');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-btn');
+
+        function processInput(input) {
+            let response = '';
+
+            // Simple command responses (you can expand this)
+            if (input === 'help') {
+                response = 'Commands available: help, about, projects, contact';
+            } else if (input === 'about') {
+                response = 'My name is James, a passionate developer.';
+            } else if (input === 'projects') {
+                response = 'View my projects on GitHub: https://github.com/DuckyDuckerson';
+            } else if (input === 'contact') {
+                response = 'Email me at: James@itslit.bet';
+            } else {
+                response = `Command '${input}' not recognized. Try typing 'help' for options.`;
+            }
+
+            // Add input and response to the chat output
+            chatOutput.innerHTML += `<br><span class="user-command">> ${input}</span>`;
+            chatOutput.innerHTML += `<br>${response}`;
+            chatOutput.scrollTop = chatOutput.scrollHeight;  // Scroll to the bottom
+        }
+
+        // Handle user input when pressing the button or 'Enter' key
+        sendButton.addEventListener('click', () => {
+            const input = userInput.value.trim();
+            if (input) {
+                processInput(input);
+                userInput.value = '';  // Clear the input field
+            }
+        });
+
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                sendButton.click();
+            }
+        });
+    </script>
+
 </body>
 </html>
+
