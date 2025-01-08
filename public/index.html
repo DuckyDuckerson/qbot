@@ -7,96 +7,118 @@
     <meta name="author" content="Your Name">
     <title>ITSLIT.BET</title>
     <link rel="stylesheet" href="styles.css">
+        header {
     <style>
+        /* Main Body Styles (Soft Dark Mode) */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #252727;
-            color: #333;
+            background-color: #1a1a1a;  /* Soft dark background */
+            color: #e4e4e4;  /* Light gray text for good contrast */
         }
+    
         header {
-            background-color: #ffffff;
-            color: white;
+            background-color: #121212;  /* Dark background for header */
+            color: #ffffff;
             padding: 20px 0;
             text-align: center;
         }
+    
         header h1 {
             margin: 0;
+            font-size: 2.5em;
+            color: #e17fff;  /* Neon pink for header text */
         }
+    
         main {
             padding: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
+    
         .intro {
             text-align: center;
             margin-bottom: 40px;
         }
+    
         .intro h2 {
-            font-size: 1.8em;
+            font-size: 2em;
+            color: #aaffff;  /* Neon blue for subheader */
         }
+    
         .intro p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.6;
+            color: #b0b0b0;  /* Light gray text */
         }
+    
         .project-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
+    
         .project {
-            background-color: #fff;
+            background-color: #2a2a2a;  /* Dark gray for project containers */
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
         }
+    
         .project h3 {
             margin-bottom: 15px;
             font-size: 1.5em;
+            color: #ffdd57;  /* Neon yellow for project titles */
         }
+    
         .project p {
             font-size: 1.1em;
-            color: #555;
+            color: #b0b0b0;
         }
+    
         .project a {
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
-            background-color: #24292f;
-            color: white;
+            background-color: #121212;
+            color: #ff17f4;  /* Neon pink for links */
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
         }
+    
         .project a:hover {
-            background-color: #0366d6;
+            background-color: #03a9f4;  /* Neon blue hover effect */
         }
+    
         footer {
-            background-color: #24292f;
-            color: white;
+            background-color: #121212;
+            color: #ffffff;
             padding: 15px 0;
             text-align: center;
         }
+    
         footer a {
-            color: #fff;
+            color: #ffdd57;
             text-decoration: none;
             margin: 0 10px;
         }
+    
         footer a:hover {
             text-decoration: underline;
         }
-
-        /* Terminal chat box styles */
+    
+        /* Terminal Chat Box Styles (Neon Cyberpunk) */
         #terminal-chat {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 800px;
+            width: 400px;
             max-height: 600px;
-            background-color: #24292f;
-            color: #17f4e3;
+            background-color: #1e1e1e;  /* Dark background for the terminal */
+            color: #00ff00;  /* Neon green for text */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -104,32 +126,33 @@
             display: flex;
             flex-direction: column;
         }
-
+    
         #terminal-chat .chat-output {
             overflow-y: auto;
             flex-grow: 1;
             margin-bottom: 10px;
-            max-height: 200px;
+            max-height: 450px;
             white-space: pre-wrap;
+            color: #00ff00;  /* Neon green output */
         }
-
+    
         #terminal-chat .chat-input {
             display: flex;
         }
-
+    
         #terminal-chat input {
             flex-grow: 1;
-            background-color: #1e2125;
-            color: #ebf417;
-            border: 1px solid #f4ff00;
+            background-color: #121212;
+            color: #ffdc00;  /* Neon yellow for input text */
+            border: 1px solid #ffdc00;
             padding: 10px;
             font-size: 1rem;
             font-family: 'Courier New', monospace;
             border-radius: 4px;
         }
-
+    
         #terminal-chat button {
-            background-color: #0366d6;
+            background-color: #03a9f4;  /* Neon blue for button */
             color: white;
             border: none;
             padding: 10px;
@@ -137,71 +160,17 @@
             margin-left: 10px;
             cursor: pointer;
         }
-
+    
         #terminal-chat button:hover {
-            background-color: #0288d1;
+            background-color: #0288d1;  /* Slightly darker neon blue on hover */
         }
-
-        #terminal-chat {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 400px;
-        max-height: 800px;
-        background-color: #24292f;
-        color: #17f4e3;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        font-family: 'Courier New', monospace;
-        display: flex; 
-        flex-direction: column;
-    }
-
-    #terminal-chat .chat-output {
-        overflow-y: auto;
-        flex-grow: 1;
-        margin-bottom: 10px;
-        max-height: 600px;
-        white-space: pre-wrap;
-    }
-
-    #terminal-chat .chat-input {
-        display: flex;
-    }
-
-    #terminal-chat input {
-        flex-grow: 1;
-        background-color: #1e2125;
-        color: #17f4e3;
-        border: 1px solid ##f4ff00;
-        padding: 10px;
-        font-size: 1rem;
-        font-family: 'Courier New', monospace;
-        border-radius: 4px;
-    }
-
-    #terminal-chat button {
-        background-color: #0366d6;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 4px;
-        margin-left: 10px;
-        cursor: pointer;
-    }
-
-    #terminal-chat button:hover {
-        background-color: #1574e0;
-    }
-
-    /* Media Query to hide the terminal on mobile devices */
-    @media (max-width: 767px) {
-        #terminal-chat {
-            display: none;  /* Hides the terminal on mobile screens */
+    
+        /* Media Query to hide the terminal on mobile devices */
+        @media (max-width: 767px) {
+            #terminal-chat {
+                display: none;  /* Hides the terminal on mobile screens */
+            }
         }
-    }
-
     </style>
 </head>
 <body>
