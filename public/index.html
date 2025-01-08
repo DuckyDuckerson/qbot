@@ -96,7 +96,7 @@
             width: 800px;
             max-height: 600px;
             background-color: #24292f;
-            color: #00ff00;
+            color: #17f4e3;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -142,7 +142,7 @@
             background-color: #0288d1;
         }
 
-         #terminal-chat {
+        #terminal-chat {
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -263,19 +263,19 @@
             if (input === 'help') {
                 response = 'Commands available: help, clear, about, projects, contact, neofetch\n-------------------------------------------';
             } else if (input === 'about') {
-                response = 'My name is James, I am a linux enthusiast and a terrible software dev. I love coding and learning new things. I main focus on learning Linux and C. I am an aspiring to be a Linux Systems Administrator.';
+                response = 'My name is James, I am a linux enthusiast and a terrible software dev. I love coding and learning new things. I main focus on learning Linux and C. I am an aspiring to be a Linux Systems Administrator.\n-------------------------------------------';
             } else if (input === 'projects') {
-                response = 'View my projects on GitHub: https://github.com/DuckyDuckerson';
+                response = 'View my projects on GitHub: https://github.com/DuckyDuckerson\n-------------------------------------------';
             } else if (input === 'contact') {
-                response = 'Email me at: James@itslit.bet';
+                response = 'Email me at: James@itslit.bet\n-------------------------------------------';
             } else if (input === 'clear') {
                 chatOutput.innerHTML = '';
                 return;
             } else if (input === 'btw') {
-                response = 'OS: Arch Linux\nHardware: Ryzen 7 5800x, RTX 3060\nUptime: 420 days, 69 hours, 69 minutes\nShell: zsh\nEditor: nvim\nDesktop: i3wm\nTerminal: alacritty\nLanguage: Python, Bash, C, HTML, CSS, Javascript, Rust, Lua' ;
+                response = 'OS: Arch Linux\nHardware: Ryzen 7 5800x, RTX 3060\nUptime: 420 days, 69 hours, 69 minutes\nShell: zsh\nEditor: nvim\nDesktop: i3wm\nTerminal: alacritty\nLanguage: Python, Bash, C, HTML, CSS, Javascript, Rust, Lua\n-------------------------------------------';
             }
             else {
-                response = `Command '${input}' not recognized. Try typing 'help' for options.`;
+                response = `Command '${input}' not recognized. Try typing 'help' for options.\n-------------------------------------------`;
             }
 
             chatOutput.innerHTML += `<br><span class="user-command">> ${input}</span>`;
