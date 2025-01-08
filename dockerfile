@@ -41,7 +41,7 @@ WORKDIR /qbot
 COPY . /qbot
 
 # Copy Cloudflare Origin certificate and private key into the container
-COPY origin.crt /etc/ssl/certs/
+COPY origin.pem /etc/ssl/certs/
 COPY origin.key /etc/ssl/private/
 
 # Configure Apache to use SSL with the Cloudflare Origin Certificate and Private Key
