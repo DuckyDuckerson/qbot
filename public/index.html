@@ -182,10 +182,9 @@
         <a href="mailto:James@itslit.bet">Email</a>
     </footer>
 
-    <!-- Terminal Chat Box -->
     <div id="terminal-chat">
         <div class="chat-output" id="chat-output">
-            Welcome to the terminal! Type a command.
+            Welcome to ITSLIT.BET! Type 'help' for a list of commands.
         </div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Enter command...">
@@ -201,11 +200,10 @@
         function processInput(input) {
             let response = '';
 
-            // Simple command responses (you can expand this)
             if (input === 'help') {
-                response = 'Commands available: help, about, projects, contact';
+                response = 'Commands available: help, clear, about, projects, contact';
             } else if (input === 'about') {
-                response = 'My name is James, a passionate developer.';
+                response = 'My name is James, I am a linux enthusiast and a terrible software dev. I love coding and learning new things. I main focus on learning Linux and C. I am an aspiring to be a Linux Systems Administrator.';
             } else if (input === 'projects') {
                 response = 'View my projects on GitHub: https://github.com/DuckyDuckerson';
             } else if (input === 'contact') {
@@ -217,18 +215,16 @@
                 response = `Command '${input}' not recognized. Try typing 'help' for options.`;
             }
 
-            // Add input and response to the chat output
             chatOutput.innerHTML += `<br><span class="user-command">> ${input}</span>`;
             chatOutput.innerHTML += `<br>${response}`;
-            chatOutput.scrollTop = chatOutput.scrollHeight;  // Scroll to the bottom
+            chatOutput.scrollTop = chatOutput.scrollHeight;
         }
 
-        // Handle user input when pressing the button or 'Enter' key
         sendButton.addEventListener('click', () => {
             const input = userInput.value.trim();
             if (input) {
                 processInput(input);
-                userInput.value = '';  // Clear the input field
+                userInput.value = '';
             }
         });
 
