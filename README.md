@@ -11,6 +11,7 @@ To run the bot you need to
 
 ## Starting the bot 
 ====================
+
 Just some things to note:
 - The bot is still a work in progress.
 - The bot is not very user friendly.
@@ -18,6 +19,7 @@ Just some things to note:
 
 ## Qscanner
 ====================
+
 Qscanner is a work in progress tool that records audio from an external source
 then transcribes the audio to text, then sends a clipped version of the audio and the 
 transcription to a discord channel.
@@ -25,6 +27,7 @@ transcription to a discord channel.
 
 ## Platforms
 ====================
+
 I have the bot running on a raspberry pi 4 with 4gb of ram and it works fine. I have also tested it on a macOS machine and it works fine there too. **Not sure about windows.**
 
 The bot is still a mess, but I am working on it. Slowly improving it.
