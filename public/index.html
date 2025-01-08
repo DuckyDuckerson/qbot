@@ -142,6 +142,66 @@
             background-color: #0288d1;
         }
 
+         #terminal-chat {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 400px;
+        max-height: 300px;
+        background-color: #24292f;
+        color: #00ff00;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        font-family: 'Courier New', monospace;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #terminal-chat .chat-output {
+        overflow-y: auto;
+        flex-grow: 1;
+        margin-bottom: 10px;
+        max-height: 200px;
+        white-space: pre-wrap;
+    }
+
+    #terminal-chat .chat-input {
+        display: flex;
+    }
+
+    #terminal-chat input {
+        flex-grow: 1;
+        background-color: #1e2125;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 10px;
+        font-size: 1rem;
+        font-family: 'Courier New', monospace;
+        border-radius: 4px;
+    }
+
+    #terminal-chat button {
+        background-color: #0366d6;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    #terminal-chat button:hover {
+        background-color: #0288d1;
+    }
+
+    /* Media Query to hide the terminal on mobile devices */
+    @media (max-width: 767px) {
+        #terminal-chat {
+            display: none;  /* Hides the terminal on mobile screens */
+        }
+    }
+
     </style>
 </head>
 <body>
