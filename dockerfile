@@ -1,17 +1,10 @@
 FROM python:3.12.4
 
-# RUN apt-get update && apt-get install -y \
-#     apache2 \
-#     libapache2-mod-wsgi-py3 \
-#     supervisor \
-#     && apt-get clean
-
-RUN pacman -Syu --noconfirm && \
-    pacman -S --noconfirm \
-    apache \
-    apache-mod_wsgi \
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    libapache2-mod-wsgi-py3 \
     supervisor \
-    && pacman -Scc --noconfirm  # Clean up the cache
+    && apt-get clean
 
 WORKDIR /qbot
 COPY . /qbot
