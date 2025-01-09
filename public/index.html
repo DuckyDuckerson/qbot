@@ -246,6 +246,12 @@
                 response = 'Email me at: James@itslit.bet\n-------------------------------------------';
             } else if (input === 'rm -rf --no-preserve-root /') {
                 response = 'Oh no everything is being deleted! How can this be! Goodbye cruel world. This webpage was not long for this world\n-------------------------------------------';
+                // reload the page
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+
             } else if (input === "penis") {
                 response = 'Pen15.\n-------------------------------------------';
             } else if (input === 'btw') {
