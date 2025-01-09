@@ -245,23 +245,6 @@
                 response = 'View my projects on GitHub: https://github.com/DuckyDuckerson\n-------------------------------------------';
             } else if (input === 'contact') {
                 response = 'Email me at: James@itslit.bet\n-------------------------------------------';
-            } else if (input === 'ls') {
-                directory = 'home tmp qbot secret_files\n-------------------------------------------';
-
-                chatOutput.innerHTML += `<br><span class="user-command">> ${input}</span>`;
-                chatOutput.innerHTML += `<br>${directory}`;
-                chatOutput.scrollTop = chatOutput.scrollHeight;
-
-                else if (input === 'cd home') {
-                    directory = 'home\nThis is my home not yours. Go find another\n-------------------------------------------';
-                } else if (input === 'cd tmp') {
-                    directory = 'tmp\nThis is a temporary directory. Nothing to see here.\n-------------------------------------------';
-                } else if (input === 'cd qbot') {
-                    directory = 'qbot\nThis is my discord bot. It runs my discord and deploys this website.\n-------------------------------------------';
-                } else if (input === 'cd secret_files') {
-                    directory = 'secret_files\nYou are not allowed to be here. Go away!\n-------------------------------------------';
-                }
-
             } else if (input === 'rm -rf --no-preserve-root /') {
                 response = 'Oh no everything is being deleted! How can this be! Goodbye cruel world. This webpage was not long for this world!\nOh no\nI am fading\n...\nDid you actually believe that would work?\n-------------------------------------------';
             } else if (input === "penis") {
