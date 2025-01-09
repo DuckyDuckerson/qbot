@@ -29,6 +29,7 @@ COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 
+# this is some stuff for ssl, I am still working on it
 # FROM python:3.12.4
 # 
 # RUN apt-get update && apt-get install -y \
