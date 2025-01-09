@@ -7,7 +7,7 @@ Quack is a simple bot that bullies users, creates voice chats and keeps track of
 To run the bot you need to 
 - Make sure you have docker installed and running on your machine.
 - Then just run the runme.sh script.
-  - The first time you run the script it will ask you for your discord api key and chatgpt api key.
+- The first time you run the script it will ask you for your discord api key and chatgpt api key, this does not seem to actually be taking in the keys and just returning $Token. I will fix this in the future but it is not pressing since no one knows this repo exists. xD
 
 ## Starting the bot 
 ====================
@@ -35,8 +35,8 @@ transcription to a discord channel.
 ## Platforms
 ====================
 
-The bot is currently running on Arch linux, but it should work on any platform that supports docker.
-
-The bot is still a mess, but I am working on it. Slowly improving it.
-
-
+Currently this bot is being tested only on linux.
+I test on a debian based raspberry pi 4.
+Then I deploy it on an Arch based server in the cloud.
+This should work on anything that supports docker.
+But I am not testing on MacOs or windows.
