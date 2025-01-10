@@ -18,16 +18,12 @@ RUN echo 'DocumentRoot /qbot/public' > /etc/apache2/sites-available/000-default.
 
 EXPOSE 8080 80
 
-# CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
-
-# CMD apachectl -D FOREGROUND && python main.py
-
-# Copy supervisord configuration
 COPY ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Use supervisord to run both Apache and the Python bot
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
+# keeping this around for "just in case" purposes
+# CMD ["python", "main.py", "apachectl", "-D", "FOREGROUND"]
+# CMD apachectl -D FOREGROUND && python main.py
 
 # this is some stuff for ssl, I am still working on it
 # FROM python:3.12.4
