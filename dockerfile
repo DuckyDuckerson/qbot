@@ -17,7 +17,7 @@ RUN echo 'DocumentRoot /qbot/public' > /etc/apache2/sites-available/000-default.
     && echo '</Directory>' >> /etc/apache2/sites-available/000-default.conf
 
 RUN echo 'LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\""' >> /etc/apache2/apache2.conf \
-    && echo 'CustomLog /qbot/log/apache2/access.log combined' >> /etc/apache2/apache2.conf
+    && echo 'CustomLog /qbot/logs/apache2/access.log combined' >> /etc/apache2/apache2.conf
 
 
 EXPOSE 8080 80
