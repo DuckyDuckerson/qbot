@@ -328,6 +328,26 @@ async def daily_msg_count():
 # ---------------------------------------------------------------------------
 
 
+# Logger --------------------------------------------------------------------
+@tasks.loop(seconds=20)
+async def qlogging():
+
+    if os.path.exists('/logs/apache2/access.log'):
+
+        with open('log.txt', 'r') as f:
+            log = f.read()
+
+            if log != log:
+
+                changes = log.split(log)
+
+                system_messages = bot.get_channel(SYSTEM_FEED)
+                await system_messages.send(f'Access update: {changes}')
+    else:
+        pass
+# ---------------------------------------------------------------------------
+
+
 # On Message ----------------------------------------------------------------
 @bot.event
 async def on_message(message):
