@@ -272,6 +272,7 @@ async def on_ready():
 
     check_empty_voice_channels.start()
     daily_msg_count.start()
+    qlogging.start()
 # ---------------------------------------------------------------------------
 
 
@@ -335,7 +336,7 @@ ip_list = ['6', '9']
 @tasks.loop(seconds=20)
 async def qlogging():
 
-    if os.path.exists('~/qbot/logs/apache2/access.log'):
+    if os.path.exists('logs/apache2/access.log'):
 
         with open('log.txt', 'r') as f:
             log = f.read()
