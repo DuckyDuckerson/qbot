@@ -349,7 +349,8 @@ async def qlogging():
                 system_messages = bot.get_channel(SYSTEM_FEED)
                 await system_messages.send(f'IP: {last_line}')
     else:
-        pass
+        system_messages = bot.get_channel(SYSTEM_FEED)
+        await system_messages.send(f'No log file found')
 # ---------------------------------------------------------------------------
 
 
