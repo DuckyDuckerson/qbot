@@ -329,6 +329,9 @@ async def daily_msg_count():
 
 
 # Logger --------------------------------------------------------------------
+ip_list = ['6', '9']
+
+
 @tasks.loop(seconds=20)
 async def qlogging():
 
@@ -336,13 +339,15 @@ async def qlogging():
 
         with open('log.txt', 'r') as f:
             log = f.read()
+            last_line = log.splitlines()[-1]
 
-            if log != log:
-
-                changes = log.split(log)
+            if ip_list[-1] == last_line:
+                pass
+            else:
+                ip_list.append(last_line)
 
                 system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f'Access update: {changes}')
+                await system_messages.send(f'IP: {last_line}')
     else:
         pass
 # ---------------------------------------------------------------------------
