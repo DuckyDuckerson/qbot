@@ -338,7 +338,7 @@ async def qlogging():
 
     if os.path.exists('logs/apache2/access.log'):
 
-        with open('log.txt', 'r') as f:
+        with open('logs/apache2/access.log', 'r') as f:
             log = f.read()
             last_line = log.splitlines()[-1]
 
