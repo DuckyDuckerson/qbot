@@ -321,7 +321,7 @@ async def rss_feed():
         with open('rss_feed.txt', 'w') as f:
             f.write(id)
             knightedgemedia = bot.get_channel(1328212148572131390)
-            await knightedgemedia.send(f'{link}')
+            await knightedgemedia.send(link)
     else:
         with open('rss_feed.txt', 'r') as f:
             last_id = f.read(-1)
@@ -331,10 +331,8 @@ async def rss_feed():
                 with open('rss_feed.txt', 'w') as f:
                     f.write(id)
                     knightedgemedia = bot.get_channel(1328212148572131390)
-                    await knightedgemedia.send(f'{link}')
-
-
-
+                    await knightedgemedia.send(link)
+# ---------------------------------------------------------------------------
 
 
 # Check empty voice channels ------------------------------------------------
