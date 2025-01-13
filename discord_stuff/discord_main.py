@@ -22,6 +22,7 @@ TOKEN = os.getenv("TOKEN")
 JTC_VC_ID = 1324581142757900359
 OWNER_ID = 927778433856061501
 SYSTEM_FEED = 1105068687062470666
+REPORT_FEED = 1328199753527332865
 BITRATE = 64000
 # -------------------------------
 
@@ -210,8 +211,8 @@ the bot {message}")
 async def feedback(inter: discord.Interaction, message: str) -> None:
     report_log(f'{message}')
 
-    system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f"User: {inter.user.name}; Reported: {message}")
+    report_messages = bot.get_channel(REPORT_FEED)
+    await report_messages.send(f"User: {inter.user.name}; Reported: {message}")
 
     await inter.response.send_message("Report submitted", ephemeral=True)
 # ---------------------------------------------------------------------------
