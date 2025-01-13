@@ -14,16 +14,22 @@ def logger(line):
             f.write(line + '\n')
 
 
-def report_log(line):
-    print(line)
+def random_string(length):
+    import random
+    import string
 
-    if not os.path.exists('report.txt'):
-        with open('report.txt', 'w') as f:
-            f.write(line + '\n')
+    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
+
+
+def report_log(report):
+
+    if not os.path.exists('logs/report.txt'):
+        with open('logs/report.txt', 'w') as f:
+            f.write(report + '\n')
 
     else:
-        with open('report.txt', 'a') as f:
-            f.write(line + '\n')
+        with open('logs/report.txt', 'a') as f:
+            f.write(report + '\n')
 
 
 def error_log(line):

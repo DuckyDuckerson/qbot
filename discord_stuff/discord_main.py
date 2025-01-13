@@ -10,7 +10,7 @@ from database.messages.disc_messages import add_message, context_messages
 from database.xp import xp_calculator, xp_to_file, xp_check
 from discord_stuff.responses import test_responses
 from discord_stuff.code_generator import code_generator
-from duck_log.logger import logger, report_log, error_log
+from duck_log.logger import logger, report_log, error_log, random_string
 from duckgpt.chat_gpt_api import response_getter
 # ----------------------------------------------
 
@@ -209,12 +209,13 @@ the bot {message}")
 @tree.command(name="report", description="report a bug, a user, or anything.")
 @app_commands.describe(message="message")
 async def feedback(inter: discord.Interaction, message: str) -> None:
-    report_log(f'{message}')
 
+    report = f'{random_string(8)}-REPORTER:{inter.user.name}\n{message}'
     report_messages = bot.get_channel(REPORT_FEED)
-    await report_messages.send(f"User: {inter.user.name}; Reported: {message}")
 
-    await inter.response.send_message("Report submitted", ephemeral=True)
+    report_log(report)
+    await report_messages.send(report)
+    await inter.response.send_message(f"Report submitted\nSummary\n{report}", ephemeral=True)
 # ---------------------------------------------------------------------------
 
 
