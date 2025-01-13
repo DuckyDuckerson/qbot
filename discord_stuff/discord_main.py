@@ -317,15 +317,21 @@ async def rss_feed():
     link = most_recent.link
 
     id = most_recent.id
-    with open('rss_feed.txt', 'r') as f:
-        last_id = f.read(-1)
-        if id == last_id:
-            pass
-        else:
-            with open('rss_feed.txt', 'w') as f:
-                f.write(id)
-                knightedgemedia = bot.get_channel(1328212148572131390)
-                await knightedgemedia.send(f'{link}')
+    if not os.path.exists('rss_feed.txt'):
+        with open('rss_feed.txt', 'w') as f:
+            f.write(id)
+            knightedgemedia = bot.get_channel(1328212148572131390)
+            await knightedgemedia.send(f'{link}')
+    else:
+        with open('rss_feed.txt', 'r') as f:
+            last_id = f.read(-1)
+            if id == last_id:
+                pass
+            else:
+                with open('rss_feed.txt', 'w') as f:
+                    f.write(id)
+                    knightedgemedia = bot.get_channel(1328212148572131390)
+                    await knightedgemedia.send(f'{link}')
 
 
 
