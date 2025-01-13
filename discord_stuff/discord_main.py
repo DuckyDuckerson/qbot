@@ -33,6 +33,7 @@ intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix="!", intents=intents)
 tree = bot.tree
+start_time = f'{time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())}'
 # --------------------------------
 
 
@@ -270,6 +271,9 @@ async def on_ready():
     synced_commands = await tree.sync()
     print(f'Successfully synced {len(synced_commands)} commands')
 
+    system_messages = bot.get_channel(SYSTEM_FEED)
+    await system_messages.send(f'Bot Started {start_time}')
+
     check_empty_voice_channels.start()
     daily_msg_count.start()
     qlogging.start()
@@ -329,7 +333,7 @@ async def daily_msg_count():
 # ---------------------------------------------------------------------------
 
 
-# Logger --------------------------------------------------------------------
+# IP Logger --------------------------------------------------------------------
 ip_list = ['6', '9']
 
 
