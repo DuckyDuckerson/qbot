@@ -278,6 +278,7 @@ async def on_ready():
     await system_messages.send(f'Bot Started {start_time}')
 
     check_empty_voice_channels.start()
+    rss_feed.start()
     daily_msg_count.start()
     qlogging.start()
 # ---------------------------------------------------------------------------
