@@ -5,6 +5,7 @@ import discord.ext
 from discord.ext import commands, tasks
 import dotenv
 import os
+import feedparser
 # ----------------------------------------------
 from database.messages.disc_messages import add_message, context_messages
 from database.xp import xp_calculator, xp_to_file, xp_check
@@ -210,7 +211,7 @@ the bot {message}")
 @app_commands.describe(message="message")
 async def feedback(inter: discord.Interaction, message: str) -> None:
 
-    report = f'{random_string(8)}-REPORTER:{inter.user.name}\n{message}'
+    report = f'{random_string(8)}-REPORTER: {inter.user.name}\n-> {message}'
     report_messages = bot.get_channel(REPORT_FEED)
 
     report_log(report)
@@ -304,6 +305,32 @@ async def on_voice_state_update(member, before, after):
     else:
         pass
 # ---------------------------------------------------------------------------
+
+
+# rss feed ------------------------------------------------------------------
+@tasks.loop(seconds=60)
+async def rss_feed():
+    feed = feedparser.parse('https://knightedgemedia.com/feed/')
+
+    most_recent = feed.entries[0]
+    title = most_recent.title
+    link = most_recent.link
+    published = most_recent.published
+    summary = most_recent.summary
+
+    id = most_recent.id
+    with open('rss_feed.txt', 'r') as f:
+        last_id = f.read(-1)
+        if id == last_id:
+            pass
+        else:
+            with open('rss_feed.txt', 'w') as f:
+                f.write(id)
+                knightedgemedia = bot.get_channel(1328212148572131390)
+                await knightedgemedia.send(f'{title}\n{link}\n{published}\n{summary}')
+
+
+
 
 
 # Check empty voice channels ------------------------------------------------

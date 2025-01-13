@@ -7,4 +7,5 @@ def installation():
     pip_install('python-dotenv')
     pip_install('openai')
     pip_install('python-ffmpeg')
+    pip_install('feedparser')
     print("Dependencies installed.")
