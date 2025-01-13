@@ -211,7 +211,7 @@ the bot {message}")
 @app_commands.describe(message="message")
 async def feedback(inter: discord.Interaction, message: str) -> None:
 
-    report = f'{random_string(8)}-REPORTER: {inter.user.name}\n-> {message}'
+    report = f'{random_string(8)}-{inter.user.name}\n-> {message}'
     report_messages = bot.get_channel(REPORT_FEED)
 
     report_log(report)
