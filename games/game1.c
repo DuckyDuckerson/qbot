@@ -4,9 +4,24 @@
 #include <string.h>
 
 // Variables---------------------------------------------------------------
-char *name;
-int inventory[10];
+int apartment_v = 0;
+int hideout_v = 1;
+int lobby_v = 2;
+int street_v = 3;
+int coffee_shop_v = 4;
+int alley_v = 5;
 // ------------------------------------------------------------------------
+int inventory[10];
+int apartment1st;
+// ------------------------------------------------------------------------
+
+// Function prototypes ----------------------------------------------------
+void last_location();
+void intro();
+void apartment();
+// ------------------------------------------------------------------------
+
+
 
 
 // functions --------------------------------------------------------------
@@ -33,9 +48,17 @@ void print_message(const char *message, int speed, int newline)
     {
         putchar('\n');
     }
+    else 
+    {
+        putchar(' ');
+    }
 }
 
 
+// Save list --------------------------------------------------------------
+int save_list[10];
+// location, apartment1st,
+// ------------------------------------------------------------------------
 void save_game()
 {
     FILE *file = fopen("savegame.txt", "w");
@@ -44,19 +67,21 @@ void save_game()
         printf("Error opening file for writing.\n");
         return;
     }
-
-    // Write the inventory to the file
-    for (int i = 0; i < 10; i++)
+    else
     {   
-        fprintf(file, "%d\n", inventory[i]);
-        fprintf(file, "%s\n", name);
-    }
+        print_message("Saving game.", 4, 1);
+        for (int i = 0; i < 10; i++)
+        {   
+            fprintf(file, "%d\n", save_list[i]);
+        }
 
-    fclose(file);
+        fclose(file);
+    }
+    
 }
 
 
-void save_check()
+void load_game()
 {
     if (access("savegame.txt", F_OK) != -1) 
     {
@@ -67,50 +92,45 @@ void save_check()
             if (file == NULL)
             {
                 printf("Error opening file for reading.\n");
-                return;
+                save_game();
+                print_message("New save created.", 4, 1);
+                intro();
+                apartment();
             }
-
-            // Read the inventory from the file
+            
+            print_message("Loading save file.", 4, 1);
             for (int i = 0; i < 10; i++)
             {   
-                fscanf(file, "%d\n", &inventory[i]);
-                fscanf(file, "%s\n", name);
+                fscanf(file, "%d", &save_list[i]);
             }
+
+            last_location();
 
             fclose(file);
         }
 
         else 
         {
-            print_message("Do you want to delete the save file? (1. Yes, 2. No)", 4, 1);
-            if (getchar() == '1')
-            {
-                remove("savegame.txt");
-                print_message("Save file deleted.", 4, 1);
-                
-                print_message("What is your name?", 4, 1);
-                fscanf(stdin, "%s", name);
-                save_game();
-            }
-
-            else {
-                print_message("Continuing without loading save file.", 4, 1);
-                
-                print_message("What is your name?", 4, 1);
-                fscanf(stdin, "%s", name);
-                save_game();
-            }
+            print_message("Deleting save file.)", 4, 1);
+            remove("savegame.txt");
+            print_message("Save file deleted.", 4, 1);
+            save_game();
+            print_message("New save created.", 4, 1);
+            intro();
+            apartment();
         }
     }
 
     else 
     {
-        print_message("What is your name?", 4, 1);
-        fscanf(stdin, "%s", name);
         save_game();
+        print_message("New save created.", 2, 1);
+        intro();
+        apartment();
     }
 }
 // ------------------------------------------------------------------------
+
 
 // Story functions --------------------------------------------------------
 void intro()
@@ -133,38 +153,153 @@ void intro()
     print_message("Your apartment is on the 9th floor", 2, 1);
     print_message("You have no windows in your container, only a small balcony you get to by opening the back doors of the container", 2, 1);
     print_message("...", 1, 1);
-
-    save_check();
 }
 
+void apt_explore()
+{
+    print_message("There is", 2, 1);
+    print_message("1. A bed", 3, 1);
+    print_message("2. A small kitchen", 3, 1);
+    print_message("3. A bathroom", 3, 1);
+    print_message("4. A closet", 3, 1);
+    print_message("5. A small table", 3, 1);
+    print_message("6. A computer", 3, 1);
+    print_message("7. Front door", 3, 1);
+    print_message("8. Balcony door", 3, 1);
+    print_message("...", 1, 1);
+
+    print_message("What do you want to interact with?", 2, 1);
+
+    char choice = getchar();
+    if (choice == 1)
+    {
+        print_message("You go to bed", 2, 1);
+        print_message("...", 1, 1);
+
+        // add story here
+    }
+
+    else if (choice == 2)
+    {
+        print_message("You go to the kitchen", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 3)
+    {
+        print_message("You go to the bathroom", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 4)
+    {
+        print_message("You go to the closet", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 5)
+    {
+        print_message("You go to the table", 2, 1);
+        print_message("...", 1, 1);
+
+        print_message("There is a note on the table", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 6)
+    {
+        print_message("You go to the computer", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 7)
+    {
+        print_message("You go to the front door", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else if (choice == 8)
+    {
+        print_message("You go to the balcony door", 2, 1);
+        print_message("...", 1, 1);
+    }
+
+    else 
+    {
+        print_message("Invalid choice", 2, 1);
+        apt_explore();
+    }
+}
 
 void apartment()
-{
-    print_message("You are home.", 3, 1);
+{   
+    int apartment1st = save_list[1];
+    save_list[0] = apartment_v;
+
+    if (apartment1st == 0)
+    {
+        print_message("You wake up in your apartment", 2, 1);
+        print_message("You can hear the rain hitting the metal", 2, 1);
+        print_message("the wind howling,", 2, 1);
+        print_message("muffled by the density of the walls.", 2, 1);
+        print_message("The doors on either side of the apartment", 2, 1);
+        print_message("is closed and sealed so water does not get in.", 2, 1);
+        print_message("...", 1, 1);
+
+        apartment1st = 1;
+        save_list[1] = apartment1st;
+
+        save_game();
+
+        apt_explore();
+    }
+
+    else 
+    {   
+        print_message("You are in your apartment", 2, 1);
+        print_message("...", 1, 1);
+        apt_explore();
+    }   
+    save_game();
 }
 
 
+// Location switch case ---------------------------------------------------
+void last_location()
+{   
+    int location = save_list[0];
+    switch (location)
+    {
+        case 0:
+            apartment();
+            break;
+        //case 0:
+        //    hideout();
+        //    break;
+        //case 2:
+        //    lobby();
+        //    break;
+        //case 3:
+        //    street();
+        //    break;
+        //case 4:
+        //    coffee_shop();
+        //    break;
+        //case 5:
+        //    alley();
+        //    break;
+        default:
+            break;
+    }
+}
+// ------------------------------------------------------------------------
 // ------------------------------------------------------------------------
 int main() 
 { 
-    print_message("Welcome to the game", 3, 1);
+    print_message("Welcome", 2, 1);
     print_message("...", 1, 1);
 
-    print_message("Do you want to play the intro? (1. Yes, 2. No)", 3, 1);
-    if (getchar() == '1')
-    {
-        intro();
-        apartment();
-    }
-    else 
-    {
-        print_message("Skipping intro...", 3, 1);
-        apartment();
-    }
-
-    
-    
-
+    load_game();
 
     return 0;
 }
