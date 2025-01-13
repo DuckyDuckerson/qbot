@@ -314,10 +314,7 @@ async def rss_feed():
     feed = feedparser.parse('https://knightedgemedia.com/feed/')
 
     most_recent = feed.entries[0]
-    title = most_recent.title
     link = most_recent.link
-    published = most_recent.published
-    summary = most_recent.summary
 
     id = most_recent.id
     with open('rss_feed.txt', 'r') as f:
@@ -328,7 +325,7 @@ async def rss_feed():
             with open('rss_feed.txt', 'w') as f:
                 f.write(id)
                 knightedgemedia = bot.get_channel(1328212148572131390)
-                await knightedgemedia.send(f'{title}\n{link}\n{published}\n{summary}')
+                await knightedgemedia.send(f'{link}')
 
 
 
