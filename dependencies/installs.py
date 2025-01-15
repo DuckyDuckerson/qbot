@@ -8,4 +8,5 @@ def installation():
     pip_install('openai')
     pip_install('python-ffmpeg')
     pip_install('feedparser')
+    pip_install('psutil')
     print("Dependencies installed.")

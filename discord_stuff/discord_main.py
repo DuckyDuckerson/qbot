@@ -278,11 +278,11 @@ async def on_ready():
     system_messages = bot.get_channel(SYSTEM_FEED)
     await system_messages.send(f'Bot Started {start_time}')
 
-    #system_usage_stats.start()
     check_empty_voice_channels.start()
     rss_feed.start()
     daily_msg_count.start()
     qlogging.start()
+    system_usage_stats.start()
 # ---------------------------------------------------------------------------
 
 
