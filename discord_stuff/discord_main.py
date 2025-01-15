@@ -334,11 +334,12 @@ async def rss_feed_sog():
 
     yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ']
     channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987]
+    channel_names = ['SOG', 'TechLinked', 'LegalEagle', 'DMDWP']
 
     # test_yt_feed_list = ['UCxuR5PaBjID0GDJYkJk-VaQ']
     # test_channel_list = [1328979287264464987]
 
-    for yt_feed, channel in zip(yt_feed_list, channel_list):
+    for yt_feed, channel, ch_name in zip(yt_feed_list, channel_list, channel_names):
 
         feed = feedparser.parse(f'https://www.youtube.com/feeds/videos.xml?channel_id={yt_feed}')
 
@@ -364,7 +365,7 @@ async def rss_feed_sog():
                 await youtube.send(link)
             else:
                 system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f'No new videos found for {yt_feed}')
+                await system_messages.send(f'No new videos found for {ch_name}')
 # ---------------------------------------------------------------------------
 
 
