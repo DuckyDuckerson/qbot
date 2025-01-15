@@ -352,13 +352,13 @@ async def rss_feed_sog():
             with open('rss_feed_yt.txt', 'r') as f:
                 lines = f.readlines()
                 for line in lines:
-                    if id == line:
-                        pass
-                    else:
+                    if id != line:
                         with open('rss_feed_yt.txt', 'a') as f:
                             f.write(id)
                             youtube = bot.get_channel(channel)
                             await youtube.send(link)
+                    else:
+                        pass
 # ---------------------------------------------------------------------------
 
 
