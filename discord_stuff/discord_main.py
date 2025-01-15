@@ -276,7 +276,7 @@ async def on_ready():
     print(f'Successfully synced {len(synced_commands)} commands')
 
     system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f'Bot Started {start_time}')
+    await system_messages.send(f'# Bot Started {start_time}')
 
     rss_feed.start()
     qlogging.start()
@@ -321,9 +321,7 @@ async def system_usage_stats():
     uptime = time.time() - psutil.boot_time()
 
     system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f'# SYSTEM_USAGE:\nCPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%')
-    await system_messages.send(f'Disk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
-
+    await system_messages.send(f'## SYSTEM_USAGE:\nCPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%\nDisk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
 # ---------------------------------------------------------------------------
 
 
