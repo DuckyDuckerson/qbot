@@ -321,8 +321,7 @@ async def system_usage_stats():
     uptime = time.time() - psutil.boot_time()
 
     system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f'CPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%')
-    time.sleep(1)
+    await system_messages.send(f'# SYSTEM_USAGE:\nCPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%')
     await system_messages.send(f'Disk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
 
 # ---------------------------------------------------------------------------
@@ -365,7 +364,7 @@ async def rss_feed_sog():
                 await youtube.send(link)
             else:
                 system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f'No new videos found for {ch_name}')
+                await system_messages.send(f'YT_FEED: No new videos found for {ch_name}')
 # ---------------------------------------------------------------------------
 
 
