@@ -338,6 +338,7 @@ async def rss_feed_sog():
     test_yt_feed_list = ['UCxuR5PaBjID0GDJYkJk-VaQ']
     test_channel_list = [1328979287264464987]
 
+
     for yt_feed, channel in zip(test_yt_feed_list, test_channel_list):
 
         feed = feedparser.parse(f'https://www.youtube.com/feeds/videos.xml?channel_id={yt_feed}')
@@ -354,14 +355,17 @@ async def rss_feed_sog():
         else:
             with open('rss_feed_yt.txt', 'r') as f:
                 lines = f.readlines()
-                for line in lines:
-                    if id != line:
-                        with open('rss_feed_yt.txt', 'a') as f:
-                            f.write(id + '\n')
-                            youtube = bot.get_channel(channel)
-                            await youtube.send(link)
-                    else:
-                        pass
+
+            id_exists = any(id.strip() == line.strip() for line in lines)
+
+            if not id_exists:
+                with open('rss_feed_yt.txt', 'a') as f:
+                    f.write(id + '\n')
+                youtube = bot.get_channel(channel)
+                await youtube.send(link)
+            else:
+                system_messages = bot.get_channel(SYSTEM_FEED)
+                await system_messages.send(f'No new videos found for {yt_feed}')
 # ---------------------------------------------------------------------------
 
 
