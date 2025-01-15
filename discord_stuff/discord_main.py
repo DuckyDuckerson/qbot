@@ -332,8 +332,8 @@ async def system_usage_stats():
 @tasks.loop(hours=5)
 async def rss_feed_sog():
 
-    yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA']
-    channel_list = [1324452237702856724, 1328975811713171547]
+    yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ']
+    channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987]
 
     for yt_feed, channel in zip(yt_feed_list, channel_list):
 
