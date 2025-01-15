@@ -6,6 +6,7 @@ from discord.ext import commands, tasks
 import dotenv
 import os
 import feedparser
+import psutil
 # ----------------------------------------------
 from database.messages.disc_messages import add_message, context_messages
 from database.xp import xp_calculator, xp_to_file, xp_check
@@ -305,6 +306,20 @@ async def on_voice_state_update(member, before, after):
 
     else:
         pass
+# ---------------------------------------------------------------------------
+
+
+# System Usage --------------------------------------------------------------
+@tasks.loop(hours=1)
+async def system_usage():
+    cpu_usage = psutil.cpu_percent(interval=1)
+    memory_usage = psutil.virtual_memory().percent
+    disk_usage = psutil.disk_usage('/').percent
+    network_usage = psutil.net_io_counters()
+    uptime = time.time() - psutil.boot_time()
+
+    system_messages = bot.get_channel(SYSTEM_FEED)
+    await system_messages.send(f'CPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%\nDisk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
 # ---------------------------------------------------------------------------
 
 
