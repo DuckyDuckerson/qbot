@@ -350,15 +350,15 @@ async def rss_feed_sog():
                 await youtube.send(link)
         else:
             with open('rss_feed_yt.txt', 'r') as f:
-                last_id = f.read(-1)
-                if id == last_id:
-                    pass
-                else:
-                    with open('rss_feed_yt.txt', 'w') as f:
-                        f.write(id)
-                        youtube = bot.get_channel(channel)
-                        await youtube.send(link)
-
+                lines = f.readlines()
+                for line in lines:
+                    if id == line:
+                        pass
+                    else:
+                        with open('rss_feed_yt.txt', 'a') as f:
+                            f.write(id)
+                            youtube = bot.get_channel(channel)
+                            await youtube.send(link)
 # ---------------------------------------------------------------------------
 
 
