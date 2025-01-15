@@ -278,7 +278,7 @@ async def on_ready():
     system_messages = bot.get_channel(SYSTEM_FEED)
     await system_messages.send(f'Bot Started {start_time}')
 
-    system_usage.start()
+    system_usage_stats.start()
     check_empty_voice_channels.start()
     rss_feed.start()
     daily_msg_count.start()
@@ -312,7 +312,7 @@ async def on_voice_state_update(member, before, after):
 
 # System Usage --------------------------------------------------------------
 @tasks.loop(hours=1)
-async def system_usage():
+async def system_usage_stats():
     cpu_usage = psutil.cpu_percent(interval=1)
     memory_usage = psutil.virtual_memory().percent
     disk_usage = psutil.disk_usage('/').percent
@@ -320,7 +320,10 @@ async def system_usage():
     uptime = time.time() - psutil.boot_time()
 
     system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f'CPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%\nDisk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
+    await system_messages.send(f'CPU Usage: {cpu_usage}%\nMemory Usage: {memory_usage}%')
+    time.sleep(1)
+    await system_messages.send(f'Disk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
+
 # ---------------------------------------------------------------------------
 
 
