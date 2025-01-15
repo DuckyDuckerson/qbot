@@ -335,7 +335,10 @@ async def rss_feed_sog():
     yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ']
     channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987]
 
-    for yt_feed, channel in zip(yt_feed_list, channel_list):
+    test_yt_feed_list = ['UCxuR5PaBjID0GDJYkJk-VaQ']
+    test_channel_list = [1328979287264464987]
+
+    for yt_feed, channel in zip(test_yt_feed_list, test_channel_list):
 
         feed = feedparser.parse(f'https://www.youtube.com/feeds/videos.xml?channel_id={yt_feed}')
 
@@ -354,7 +357,7 @@ async def rss_feed_sog():
                 for line in lines:
                     if id != line:
                         with open('rss_feed_yt.txt', 'a') as f:
-                            f.write(id)
+                            f.write(id + '\n')
                             youtube = bot.get_channel(channel)
                             await youtube.send(link)
                     else:
