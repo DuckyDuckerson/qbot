@@ -335,9 +335,6 @@ async def rss_feed_sog():
     channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987]
     channel_names = ['SOG', 'TechLinked', 'LegalEagle', 'DMDWP']
 
-    # test_yt_feed_list = ['UCxuR5PaBjID0GDJYkJk-VaQ']
-    # test_channel_list = [1328979287264464987]
-
     for yt_feed, channel, ch_name in zip(yt_feed_list, channel_list, channel_names):
 
         feed = feedparser.parse(f'https://www.youtube.com/feeds/videos.xml?channel_id={yt_feed}')
@@ -371,6 +368,60 @@ async def rss_feed_sog():
 # rss feed ------------------------------------------------------------------
 @tasks.loop(seconds=60)
 async def rss_feed():
+
+    feed_list = ['https://knightedgemedia.com/feed/']
+    channel_list = [1328212148572131390]
+    channel_names = ['KnightEdgeMedia']
+
+    for feed, channel, ch_name in zip(feed_list, channel_list, channel_names):
+
+        feed = feedparser.parse(f'{feed}')
+
+        most_recent = feed.entries[0]
+        link = most_recent.link
+
+        id = most_recent.id
+        if not os.path.exists('rss_feed.txt'):
+            with open('rss_feed.txt', 'w') as f:
+                f.write(id)
+                youtube = bot.get_channel(channel)
+                await youtube.send(link)
+        else:
+            with open('rss_feed.txt', 'r') as f:
+                lines = f.readlines()
+
+            id_exists = any(id.strip() == line.strip() for line in lines)
+
+            if not id_exists:
+                with open('rss_feed.txt', 'a') as f:
+                    f.write(id + '\n')
+                youtube = bot.get_channel(channel)
+                await youtube.send(link)
+            else:
+                pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     feed = feedparser.parse('https://knightedgemedia.com/feed/')
 
     most_recent = feed.entries[0]
