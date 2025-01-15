@@ -278,11 +278,12 @@ async def on_ready():
     system_messages = bot.get_channel(SYSTEM_FEED)
     await system_messages.send(f'Bot Started {start_time}')
 
-    check_empty_voice_channels.start()
     rss_feed.start()
-    daily_msg_count.start()
     qlogging.start()
+    rss_feed_sog.start()
+    daily_msg_count.start()
     system_usage_stats.start()
+    check_empty_voice_channels.start()
 # ---------------------------------------------------------------------------
 
 
@@ -324,6 +325,33 @@ async def system_usage_stats():
     time.sleep(1)
     await system_messages.send(f'Disk Usage: {disk_usage}%\nNetwork Usage: {network_usage}\nUptime: {uptime}')
 
+# ---------------------------------------------------------------------------
+
+
+# rss youtube feed ----------------------------------------------------------
+@tasks.loop(hours=5)
+async def rss_feed_sog():
+    feed = feedparser.parse('https://www.youtube.com/feeds/videos.xml?channel_id=UCtMVHI3AJD4Qk4hcbZnI9ZQ')
+
+    most_recent = feed.entries[0]
+    link = most_recent.link
+
+    id = most_recent.link
+    if not os.path.exists('rss_feed_sog.txt'):
+        with open('rss_feed_sog.txt', 'w') as f:
+            f.write(id)
+            youtube = bot.get_channel(1324452237702856724)
+            await youtube.send(link)
+    else:
+        with open('rss_feed_sog.txt', 'r') as f:
+            last_id = f.read(-1)
+            if id == last_id:
+                pass
+            else:
+                with open('rss_feed_sog.txt', 'w') as f:
+                    f.write(id)
+                    youtube = bot.get_channel(1324452237702856724)
+                    await youtube.send(link)
 # ---------------------------------------------------------------------------
 
 
