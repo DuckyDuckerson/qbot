@@ -155,9 +155,18 @@ void intro()
     print_message("...", 1, 1);
 }
 
+
+void chapter1()
+{
+    print_message("You step out of your apartment", 2, 1);
+    print_message("You walk down the stairs to the ground floor", 2, 1);
+    print_message("You walk out of the building", 2, 1);
+    print_message("...", 1, 1);
+}
+
+
 void apt_explore()
 {
-    print_message("There is", 2, 1);
     print_message("1. A bed", 3, 1);
     print_message("2. A small kitchen", 3, 1);
     print_message("3. A bathroom", 3, 1);
@@ -199,11 +208,13 @@ void apt_explore()
 
     else if (choice == 5)
     {
-        print_message("You go to the table", 2, 1);
-        print_message("...", 1, 1);
-
         print_message("There is a note on the table", 2, 1);
+        print_message("Note: When you wake up meet me in the alley", 2, 1);
         print_message("...", 1, 1);
+        print_message("How did he get in here? He does not have a key...", 2, 1);
+        print_message("Shit...", 2, 1);
+        print_message("Well I better see what he wants.", 2, 1)
+        apt_explore()
     }
 
     else if (choice == 6)
@@ -214,14 +225,57 @@ void apt_explore()
 
     else if (choice == 7)
     {
-        print_message("You go to the front door", 2, 1);
-        print_message("...", 1, 1);
+        chapter1();
     }
 
     else if (choice == 8)
     {
-        print_message("You go to the balcony door", 2, 1);
+        print_message("You open the heavy balcony doors,", 2, 1);
+        print_message("and step out onto the small balcony.", 2, 1);
+        print_message("Cold rain hits your face.", 2, 1);
+        print_message("Gusts of wind try to push you back inside.", 2, 1);
         print_message("...", 1, 1);
+
+        print_message("You can see the city infront of, and below you", 2, 1);
+        print_message("The city is dark, only lit by the neon signs of the buildings", 2, 1);
+        print_message("The bustling city below you can almost not be heard", 2, 1);
+        print_message("through the storm.", 2, 1);
+
+        print_message("...", 1, 1);
+
+        print_message("Do you want to go back inside?", 3, 1);
+        print_message("1. Yes", 4, 1);
+        print_message("2. No", 4, 1);
+
+        char choice = getchar();
+        if (choice == 1)
+        {
+            print_message("You go back inside", 2, 1);
+            print_message("...", 1, 1);
+            apt_explore();
+        }
+
+        else 
+        {
+            print_message("You see a flashing light from an alley across the street.", 2, 1);
+            print_message("...", 1, 1);
+            print_message("Do you want to go to the alley", 2, 1);
+            print_message("or go back inside?", 2, 1);
+            print_message("1. Go to the alley", 4, 1);
+            print_message("2. Go back inside", 4, 1);
+
+            char choice = getchar();
+            if (choice == 1)
+            {
+                chapter1();
+            }
+
+            else 
+            {
+                print_message("You go back inside", 2, 1);
+                print_message("...", 1, 1);
+                apt_explore();
+        }
     }
 
     else 
