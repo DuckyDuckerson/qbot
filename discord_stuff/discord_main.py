@@ -329,9 +329,9 @@ async def system_usage_stats():
 @tasks.loop(hours=5)
 async def rss_feed_sog():
 
-    yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ']
-    channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987]
-    channel_names = ['SOG', 'TechLinked', 'LegalEagle', 'DMDWP']
+    yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ', 'UClFSU9_bUb4Rc6OYfTt5SPw']
+    channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987, 1329692605935779900]
+    channel_names = ['SOG', 'TechLinked', 'LegalEagle', 'DMDWP', 'PhilipDeFranco']
 
     for yt_feed, channel, ch_name in zip(yt_feed_list, channel_list, channel_names):
 
