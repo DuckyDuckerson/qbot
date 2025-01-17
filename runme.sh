@@ -1,3 +1,5 @@
+git pull
+
 if [ ! -f discord_stuff/.env ]; then
     echo "Creating .env file"
     touch discord_stuff/.env
