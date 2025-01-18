@@ -213,8 +213,8 @@ void apt_explore()
         print_message("...", 1, 1);
         print_message("How did he get in here? He does not have a key...", 2, 1);
         print_message("Shit...", 2, 1);
-        print_message("Well I better see what he wants.", 2, 1)
-        apt_explore()
+        print_message("Well I better see what he wants.", 2, 1);
+        apt_explore();
     }
 
     else if (choice == 6)
@@ -275,6 +275,7 @@ void apt_explore()
                 print_message("You go back inside", 2, 1);
                 print_message("...", 1, 1);
                 apt_explore();
+            }
         }
     }
 
