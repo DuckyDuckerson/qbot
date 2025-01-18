@@ -350,7 +350,7 @@ void last_location()
 // ------------------------------------------------------------------------
 int main() 
 { 
-    print_message("Welcome", 2, 1);
+    print_message("Welcome to Anchorage", 2, 1);
     print_message("...", 1, 1);
 
     load_game();
