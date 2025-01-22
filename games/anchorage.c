@@ -165,9 +165,7 @@ void intro()
 void chapter1()
 {
     print_message("You step out of your apartment", 2, 1);
-    print_message("You walk down the stairs to the ground floor", 2, 1);
-    print_message("You walk out of the building", 2, 1);
-    print_message("...", 1, 1);
+    print_message(
 }
 
 
@@ -334,21 +332,21 @@ void last_location()
         case 0:
             apartment();
             break;
-        //case 0:
-        //    hideout();
-        //    break;
-        //case 2:
-        //    lobby();
-        //    break;
-        //case 3:
-        //    street();
-        //    break;
-        //case 4:
-        //    coffee_shop();
-        //    break;
-        //case 5:
-        //    alley();
-        //    break;
+        case 1:
+            hideout();
+            break;
+        case 2:
+            lobby();
+            break;
+        case 3:
+            street();
+            break;
+        case 4:
+            coffee_shop();
+            break;
+        case 5:
+            alley();
+            break;
         default:
             break;
     }
