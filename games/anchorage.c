@@ -165,7 +165,34 @@ void intro()
 void chapter1()
 {
     print_message("You step out of your apartment", 2, 1);
-    print_message(
+    print_message("...", 1, 1);
+
+
+    print_message("On your left you see the entrance to a", 2, 1);
+    print_message("unit get pulled away from the building.", 2, 1);
+    print_message("...", 1, 1);
+
+    print_message("Wind starts howling, screaming through the hallways.", 2, 1);
+    print_message("...", 1, 1);
+
+    print_message("The sound of the wind is deafening.", 2, 1);
+    print_message("The sound gets quieter as another unit gets", 2, 1);
+    print_message("slotted into the old units place.", 2, 1);
+    print_message("...", 1, 1);
+
+    print_message("On your right is the elevator.", 2, 1);
+    print_message("The doors open up and two men come out", 2, 1);
+    print_message("They are wearing the government issued raincoat.", 2, 1);
+    print_message("They laugh and chatter as they walk down the hall towards you.", 2, 1);
+    print_message("...", 1, 1);
+
+    print_message("You take the elevator down to the lobby.", 2, 1);
+    print_message("...", 1, 1);
+
+    print_message("Stepping outside of the building,", 2, 1);
+    print_message("You are hit by a wall of rain and wind.", 2, 1);
+    print_message("You can see the streetlights flicker in the distance.", 2, 1);
+
 }
 
 
