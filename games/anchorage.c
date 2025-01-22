@@ -13,6 +13,7 @@ int alley_v = 5;
 // ------------------------------------------------------------------------
 int inventory[10];
 int apartment1st;
+int input;
 // ------------------------------------------------------------------------
 
 // Function prototypes ----------------------------------------------------
@@ -85,8 +86,13 @@ void load_game()
 {
     if (access("savegame.txt", F_OK) != -1) 
     {
-        print_message("There is a save file, do you want to load it? (1. Yes, 2. No)", 4, 1);
-        if (getchar() == '1')
+        print_message("There is a save file, do you want to load it?", 4, 1);
+        print_message("1. Yes", 4, 1);
+        print_message("2. No", 4, 1);
+
+        print_message("~>", 1, 0);
+        scanf("%d", &input);
+        if (input == 1)
         {
             FILE *file = fopen("savegame.txt", "r");
             if (file == NULL)
@@ -110,7 +116,7 @@ void load_game()
         }
 
         else 
-        {
+        {   
             print_message("Deleting save file.)", 4, 1);
             remove("savegame.txt");
             print_message("Save file deleted.", 4, 1);
@@ -179,35 +185,34 @@ void apt_explore()
 
     print_message("What do you want to interact with?", 2, 1);
 
-    char choice = getchar();
-    if (choice == 1)
-    {
+    print_message("~>", 1, 0);
+    scanf("%d", &input);
+    if (input == 1)
+    {   // Bed
         print_message("You go to bed", 2, 1);
         print_message("...", 1, 1);
-
-        // add story here
     }
 
-    else if (choice == 2)
-    {
+    else if (input == 2)
+    {   // Kitchen
         print_message("You go to the kitchen", 2, 1);
         print_message("...", 1, 1);
     }
 
-    else if (choice == 3)
-    {
+    else if (input == 3)
+    {   // Bathroom
         print_message("You go to the bathroom", 2, 1);
         print_message("...", 1, 1);
     }
 
-    else if (choice == 4)
-    {
+    else if (input == 4)
+    {   // Closet
         print_message("You go to the closet", 2, 1);
         print_message("...", 1, 1);
     }
 
-    else if (choice == 5)
-    {
+    else if (input == 5)
+    {   // Table
         print_message("There is a note on the table", 2, 1);
         print_message("Note: When you wake up meet me in the alley", 2, 1);
         print_message("...", 1, 1);
@@ -217,19 +222,19 @@ void apt_explore()
         apt_explore();
     }
 
-    else if (choice == 6)
-    {
+    else if (input == 6)
+    {   // Computer
         print_message("You go to the computer", 2, 1);
         print_message("...", 1, 1);
     }
 
-    else if (choice == 7)
-    {
+    else if (input == 7)
+    {   // Front door
         chapter1();
     }
 
-    else if (choice == 8)
-    {
+    else if (input == 8)
+    {   // Balcony
         print_message("You open the heavy balcony doors,", 2, 1);
         print_message("and step out onto the small balcony.", 2, 1);
         print_message("Cold rain hits your face.", 2, 1);
@@ -247,8 +252,9 @@ void apt_explore()
         print_message("1. Yes", 4, 1);
         print_message("2. No", 4, 1);
 
-        char choice = getchar();
-        if (choice == 1)
+        print_message("~>", 1, 0);
+        scanf("%d", &input);
+        if (input == '1')
         {
             print_message("You go back inside", 2, 1);
             print_message("...", 1, 1);
@@ -264,8 +270,9 @@ void apt_explore()
             print_message("1. Go to the alley", 4, 1);
             print_message("2. Go back inside", 4, 1);
 
-            char choice = getchar();
-            if (choice == 1)
+            print_message("~>", 1, 0);
+            scanf("%d", &input);
+            if (input == 1)
             {
                 chapter1();
             }
@@ -315,7 +322,6 @@ void apartment()
         print_message("...", 1, 1);
         apt_explore();
     }   
-    save_game();
 }
 
 
