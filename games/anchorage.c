@@ -5,11 +5,11 @@
 
 // Variables---------------------------------------------------------------
 int apartment_v = 0;
-int hideout_v = 1;
+int alley_v = 1;
 int lobby_v = 2;
 int street_v = 3;
 int coffee_shop_v = 4;
-int alley_v = 5;
+int hideout_v = 5;
 // ------------------------------------------------------------------------
 int inventory[10];
 int apartment1st;
@@ -20,6 +20,13 @@ int input;
 void last_location();
 void intro();
 void apartment();
+void alley();
+void chapter1();
+void apt_explore();
+void hideout();
+void lobby();
+void street();
+void coffee_shop();
 // ------------------------------------------------------------------------
 
 
@@ -161,6 +168,12 @@ void intro()
     print_message("...", 1, 1);
 }
 
+void alley()
+{
+    print_message("You walk into the alley", 2, 1);
+    print_message("...", 1, 1);
+}
+
 
 void chapter1()
 {
@@ -192,7 +205,22 @@ void chapter1()
     print_message("Stepping outside of the building,", 2, 1);
     print_message("You are hit by a wall of rain and wind.", 2, 1);
     print_message("You can see the streetlights flicker in the distance.", 2, 1);
+    print_message("...", 1, 1);
 
+    print_message("A police cruiser speeds past, sirens blaring inaudibly", 2, 1);
+    print_message("through the rain and wind.", 2, 1);
+    print_message("...", 1, 1);
+    
+    print_message("You walk down the street until you see", 2, 1);
+    print_message("a coffee shop.", 2, 1);
+    print_message("'Bean Water'", 3, 1);
+    print_message("...", 1, 1);
+
+    print_message("You cross the street and walk into the alley", 2, 1);
+    print_message("that is next to the coffee shop.", 2, 1);
+    print_message("...", 1, 1);
+
+    alley();
 }
 
 
@@ -360,20 +388,20 @@ void last_location()
             apartment();
             break;
         case 1:
-            hideout();
-            break;
-        case 2:
-            lobby();
-            break;
-        case 3:
-            street();
-            break;
-        case 4:
-            coffee_shop();
-            break;
-        case 5:
             alley();
             break;
+        //case 1:
+        //    hideout();
+        //    break;
+        //case 2:
+        //    lobby();
+        //    break;
+        //case 3:
+        //    street();
+        //    break;
+        //case 4:
+        //    coffee_shop();
+        //    break;
         default:
             break;
     }
