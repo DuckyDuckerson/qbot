@@ -30,8 +30,14 @@ BITRATE = 64000
 
 
 # Variables ----------------------
+
+# Magic numbers ---------------------------------
 loop_timer_hour = 1
 msg_count = 0
+yt_feed_time = 1  # hours
+system_feed_time = 1  # hours
+rss_time = 30  # seconds
+# -----------------------------------------------
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -312,7 +318,7 @@ async def on_voice_state_update(member, before, after):
 
 
 # System Usage --------------------------------------------------------------
-@tasks.loop(hours=1)
+@tasks.loop(hours=system_feed_time)
 async def system_usage_stats():
     cpu_usage = psutil.cpu_percent(interval=1)
     memory_usage = psutil.virtual_memory().percent
@@ -326,7 +332,7 @@ async def system_usage_stats():
 
 
 # rss youtube feed ----------------------------------------------------------
-@tasks.loop(hours=5)
+@tasks.loop(hours=yt_feed_time)
 async def rss_feed_sog():
 
     yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ', 'UClFSU9_bUb4Rc6OYfTt5SPw']
@@ -364,7 +370,7 @@ async def rss_feed_sog():
 
 
 # rss feed ------------------------------------------------------------------
-@tasks.loop(seconds=60)
+@tasks.loop(seconds=rss_time)
 async def rss_feed():
 
     feed_list = ['https://knightedgemedia.com/feed/']
