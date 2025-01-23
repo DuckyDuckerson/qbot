@@ -395,7 +395,6 @@ async def rss_feed():
                 lines = f.readlines()
 
             id_exists = any(id.strip() == line.strip() for line in lines)
-
             if not id_exists:
                 with open('rss_feed.txt', 'a') as f:
                     f.write(id + '\n')
