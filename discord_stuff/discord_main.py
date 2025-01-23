@@ -403,50 +403,6 @@ async def rss_feed():
                 await youtube.send(link)
             else:
                 pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    feed = feedparser.parse('https://knightedgemedia.com/feed/')
-
-    most_recent = feed.entries[0]
-    link = most_recent.link
-
-    id = most_recent.id
-    if not os.path.exists('rss_feed.txt'):
-        with open('rss_feed.txt', 'w') as f:
-            f.write(id)
-            knightedgemedia = bot.get_channel(1328212148572131390)
-            await knightedgemedia.send(link)
-    else:
-        with open('rss_feed.txt', 'r') as f:
-            last_id = f.read(-1)
-            if id == last_id:
-                pass
-            else:
-                with open('rss_feed.txt', 'w') as f:
-                    f.write(id)
-                    knightedgemedia = bot.get_channel(1328212148572131390)
-                    await knightedgemedia.send(link)
 # ---------------------------------------------------------------------------
 
 
@@ -467,7 +423,7 @@ async def check_empty_voice_channels():
                 vc_name = channel.name
 
                 system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f'Empty VC: {vc_name} was deleted')
+                await system_messages.send('Empty VC: {vc_name} was deleted')
 # ---------------------------------------------------------------------------
 
 
