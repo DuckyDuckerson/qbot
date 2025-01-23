@@ -423,7 +423,7 @@ async def check_empty_voice_channels():
                 vc_name = channel.name
 
                 system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send('Empty VC: {vc_name} was deleted')
+                await system_messages.send(f'Empty VC: {vc_name} was deleted')
 # ---------------------------------------------------------------------------
 
 
@@ -457,7 +457,7 @@ async def qlogging():
                 await system_messages.send(f'IP: {last_line}')
     else:
         system_messages = bot.get_channel(SYSTEM_FEED)
-        await system_messages.send(f'No log file found')
+        await system_messages.send('No log file found')
 # ---------------------------------------------------------------------------
 
 
