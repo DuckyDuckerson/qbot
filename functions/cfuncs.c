@@ -53,6 +53,21 @@ void print_message(const char *message, int speed, int newline)
 }
 
 
+int spin()
+{
+  char chars[] = {'/', '-', '\\', '|'};
+  int i = 0;
+  
+  while (1) {
+      printf("\r%c", chars[i]);
+      fflush(stdout);
+      usleep(50000);
+      i = (i + 1) % 4;
+  }
+  return 0;
+}
+
+
 int shell_commands() 
 {
   system("ls -l");
