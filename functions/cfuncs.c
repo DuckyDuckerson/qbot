@@ -72,5 +72,6 @@ int shell_commands()
 {
   system("ls -l");
   system("pwd");
+  return 0;
 }
 
