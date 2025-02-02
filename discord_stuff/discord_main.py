@@ -266,23 +266,18 @@ async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
         JTC_VC_ID.append(channel.id)
         await inter.response.send_message(f"Channels: {JTC_VC_ID}", ephemeral=True)
 
-        if not os.path.exists('jtc_vc_id.txt'):
-            with open('jtc_vc_id.txt', 'w') as f:
-                f.write(channel.id)
+        with open('jtc_vc_id.txt', 'r') as f:
+            lines = f.readlines()
 
+        if channel.id not in lines:
+            with open('jtc_vc_id.txt', 'a') as f:
+                f.write(channel.id + '\n')
         else:
+            pass
 
-            with open('jtc_vc_id.txt', 'r') as f:
-                lines = f.readlines()
+        system_messages = bot.get_channel(SYSTEM_FEED)
+        await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
 
-            id_exists = any(channel.id == line.strip() for line in lines)
-
-            if not id_exists:
-                with open('jtc_vc_id.txt', 'a') as f:
-                    f.write(id + '\n')
-            else:
-                system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list\n{JTC_VC_ID}")
 
         await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
 # ---------------------------------------------------------------------------
