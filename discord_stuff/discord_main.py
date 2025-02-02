@@ -300,20 +300,23 @@ async def on_voice_state_update(member, before, after):
     channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=channel.category_id)
 
-    if after.channel is not None and after.channel.id in JTC_VC_ID:
+    for channel in guild.voice_channels:
+        
 
-        new_channel = await guild.create_voice_channel(
-            name=f"VC: {code_generator()}",
-            category=category, bitrate=BITRATE)
+        if after.channel is not None and after.channel.id in JTC_VC_ID:
 
-        await member.move_to(new_channel)
+            new_channel = await guild.create_voice_channel(
+                name=f"VC: {code_generator()}",
+                category=category, bitrate=BITRATE)
 
-        system_messages = bot.get_channel(SYSTEM_FEED)
-        await system_messages.send(f'User: {member.name} joined the JTC VC and was moved to \
+            await member.move_to(new_channel)
+
+            system_messages = bot.get_channel(SYSTEM_FEED)
+            await system_messages.send(f'User: {member.name} joined the JTC VC and was moved to \
 {new_channel.name}.')
 
-    else:
-        pass
+        else:
+            pass
 # ---------------------------------------------------------------------------
 
 
