@@ -21,7 +21,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1335453203910627391, 1324581142757900359]
+JTC_VC_ID = [1335453203910627391, 1324581142757900359, 1335458053490868294]
 OWNER_ID = 927778433856061501
 SYSTEM_FEED = 1328539466029072405
 REPORT_FEED = 1328539570895061093
@@ -300,7 +300,7 @@ async def on_voice_state_update(member, before, after):
     channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=channel.category_id)
 
-    if after.channel is not None and after.channel.id == JTC_VC_ID:
+    if after.channel is not None and after.channel.id in JTC_VC_ID:
 
         new_channel = await guild.create_voice_channel(
             name=f"VC: {code_generator()}",
