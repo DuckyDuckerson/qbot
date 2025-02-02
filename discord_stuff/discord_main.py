@@ -33,6 +33,9 @@ BITRATE = 64000
 if os.path.exists('jtc_vc_id.txt'):
     with open('jtc_vc_id.txt', 'r') as f:
         JTC_VC_ID = f.readlines()
+else:
+    with open('jtc_vc_id.txt', 'w') as f:
+        f.write('1335453203910627391')
 # -------------------------------
 
 
@@ -253,7 +256,6 @@ async def ping(inter: discord.Interaction):
 # Add Voice channel to JTC_VC_ID --------------------------------------------
 @tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
 async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
-    defer = inter.response.defer()
 
     if inter.user.id not in ADMIN_ID:
         await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
@@ -261,7 +263,6 @@ async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
         await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
 
     else:
-        defer.update(content="Adding channel to JTC_VC_ID list")
         JTC_VC_ID.append(channel.id)
         await inter.response.send_message(f"Channels: {JTC_VC_ID}", ephemeral=True)
 
