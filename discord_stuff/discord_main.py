@@ -272,14 +272,18 @@ async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
         if channel.id not in lines:
             with open('jtc_vc_id.txt', 'a') as f:
                 f.write(channel.id + '\n')
+
+            await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
+            system_messages = bot.get_channel(SYSTEM_FEED)
+            await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
+
         else:
-            pass
+            await inter.response.send_message(f"{channel.name} is already in the JTC_VC_ID list", ephemeral=True)
+            system_messages = bot.get_channel(SYSTEM_FEED)
+            await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
 
-        system_messages = bot.get_channel(SYSTEM_FEED)
-        await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
 
 
-        await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
 # ---------------------------------------------------------------------------
 
 
