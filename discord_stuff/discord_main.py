@@ -21,7 +21,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1324581142757900359, 1335446758913998948]
+JTC_VC_ID = [1335451014266093690, 1335450489487229072, 1324581142757900359, 1335446758913998948]
 OWNER_ID = 927778433856061501
 SYSTEM_FEED = 1328539466029072405
 REPORT_FEED = 1328539570895061093
@@ -414,18 +414,17 @@ async def check_empty_voice_channels():
 
         for channel in guild.voice_channels:
 
-            for i in range(len(JTC_VC_ID)):
+            for channel_id in JTC_VC_ID:
 
-                if channel.id == JTC_VC_ID[i]:
-                    continue
+                if channel.id != JTC_VC_ID:
 
-            if len(channel.members) == 0:
-                await channel.delete()
+                    if len(channel.members) == 0:
+                        await channel.delete()
 
-                vc_name = channel.name
+                        vc_name = channel.name
 
-                system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send(f'Empty VC: {vc_name} was deleted')   
+                        system_messages = bot.get_channel(SYSTEM_FEED)
+                        await system_messages.send(f'Empty VC: {vc_name} was deleted')
 # ---------------------------------------------------------------------------
 
 
