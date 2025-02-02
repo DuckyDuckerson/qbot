@@ -300,9 +300,9 @@ async def on_voice_state_update(member, before, after):
     channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=channel.category_id)
 
-    for vc in JTC_VC_ID:
+    for i in range(len(JTC_VC_ID)):
 
-        if after.channel is not None and after.channel.id == vc:
+        if after.channel is not None and after.channel.id == JTC_VC_ID[i]:
 
             new_channel = await guild.create_voice_channel(
                 name=f"Losers: {code_generator()}",
