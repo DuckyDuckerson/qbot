@@ -326,13 +326,13 @@ async def on_ready():
     synced_commands = await tree.sync()
     print(f'Successfully synced {len(synced_commands)} commands')
 
-    rss_feed.start()
-    qlogging.start()
     load_vc_list.start()
-    rss_feed_yt.start()
-    daily_msg_count.start()
-    system_usage_stats.start()
-    check_empty_voice_channels.start()
+    #qlogging.start()
+    #system_usage_stats.start()
+    #check_empty_voice_channels.start()
+    #rss_feed.start()
+    #rss_feed_yt.start()
+    #daily_msg_count.start()
 # ---------------------------------------------------------------------------
 
 
