@@ -21,11 +21,18 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1335453203910627391, 1324581142757900359, 1335458053490868294]
+JTC_VC_ID = [1335453203910627391]
 OWNER_ID = 927778433856061501
+ADMIN_ID = [927778433856061501]
 SYSTEM_FEED = 1328539466029072405
 REPORT_FEED = 1328539570895061093
 BITRATE = 64000
+# -------------------------------
+
+# Load JTC_VC_ID from file-----
+if os.path.exists('jtc_vc_id.txt'):
+    with open('jtc_vc_id.txt', 'r') as f:
+        JTC_VC_ID = f.readlines()
 # -------------------------------
 
 
@@ -241,6 +248,28 @@ async def ping(inter: discord.Interaction):
     await inter.response.send_message(f"Pong!: {round(bot.latency * 1000)}ms",
                                       ephemeral=True)
 # ---------------------------------------------------------------------------
+
+
+# Add Voice channel to JTC_VC_ID --------------------------------------------
+@tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
+async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
+
+    if inter.user.id != ADMIN_ID:
+        await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
+        system_messages = bot.get_channel(SYSTEM_FEED)
+        await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
+
+    else:
+        JTC_VC_ID.append(channel.id)
+        await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
+
+        with open('jtc_vc_id.txt', 'w') as f:
+            f.write(JTC_VC_ID)
+
+        system_messages = bot.get_channel(SYSTEM_FEED)
+        await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list\n{JTC_VC_ID}")
+# ---------------------------------------------------------------------------
+
 
 
 # Command to sync commands --------------------------------------------------
