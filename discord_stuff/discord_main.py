@@ -264,7 +264,7 @@ async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
 
     else:
         JTC_VC_ID.append(channel.id)
-        await inter.response.send_message(f"Channels: {JTC_VC_ID}", ephemeral=True)
+        #await inter.response.send_message(f"Channels: {JTC_VC_ID}", ephemeral=True)
 
         with open('jtc_vc_id.txt', 'r') as f:
             lines = f.readlines()
