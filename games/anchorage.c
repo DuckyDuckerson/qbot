@@ -118,7 +118,6 @@ void load_game()
             }
 
             last_location();
-
             fclose(file);
         }
 
@@ -149,14 +148,17 @@ void load_game()
 void intro()
 {
     print_message("The year is 2094", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("Hurricanes threaten the NEA's capital Anchorage", 2, 1);
     print_message("North Enterpise Alliance", 5,1);
+
     print_message("...", 1, 1);
 
     print_message("The NEA is a government formed by corporations after the United States of America fell from internal conflict", 2, 1);
     print_message("The NEA took over the western states and western Canada", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("You are a citizen of the NEA", 2, 1);
@@ -165,8 +167,10 @@ void intro()
     print_message("The building has a movable crane that can move the container apartments around", 2, 1);
     print_message("Your apartment is on the 9th floor", 2, 1);
     print_message("You have no windows in your container, only a small balcony you get to by opening the back doors of the container", 2, 1);
+
     print_message("...", 1, 1);
 }
+
 
 void alley()
 {
@@ -178,46 +182,55 @@ void alley()
 void chapter1()
 {
     print_message("You step out of your apartment", 2, 1);
-    print_message("...", 1, 1);
 
+    print_message("...", 1, 1);
 
     print_message("On your left you see the entrance to a", 2, 1);
     print_message("unit get pulled away from the building.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("Wind starts howling, screaming through the hallways.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("The sound of the wind is deafening.", 2, 1);
     print_message("The sound gets quieter as another unit gets", 2, 1);
     print_message("slotted into the old units place.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("On your right is the elevator.", 2, 1);
     print_message("The doors open up and two men come out", 2, 1);
     print_message("They are wearing the government issued raincoat.", 2, 1);
     print_message("They laugh and chatter as they walk down the hall towards you.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("You take the elevator down to the lobby.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("Stepping outside of the building,", 2, 1);
     print_message("You are hit by a wall of rain and wind.", 2, 1);
     print_message("You can see the streetlights flicker in the distance.", 2, 1);
+
     print_message("...", 1, 1);
 
     print_message("A police cruiser speeds past, sirens blaring inaudibly", 2, 1);
     print_message("through the rain and wind.", 2, 1);
+
     print_message("...", 1, 1);
     
     print_message("You walk down the street until you see", 2, 1);
     print_message("a coffee shop.", 2, 1);
     print_message("'Bean Water'", 3, 1);
+
     print_message("...", 1, 1);
 
     print_message("You cross the street and walk into the alley", 2, 1);
     print_message("that is next to the coffee shop.", 2, 1);
+
     print_message("...", 1, 1);
 
     alley();
@@ -268,7 +281,9 @@ void apt_explore()
     {   // Table
         print_message("There is a note on the table", 2, 1);
         print_message("Note: When you wake up meet me in the alley", 2, 1);
+
         print_message("...", 1, 1);
+
         print_message("How did he get in here? He does not have a key...", 2, 1);
         print_message("Shit...", 2, 1);
         print_message("Well I better see what he wants.", 2, 1);
@@ -292,6 +307,7 @@ void apt_explore()
         print_message("and step out onto the small balcony.", 2, 1);
         print_message("Cold rain hits your face.", 2, 1);
         print_message("Gusts of wind try to push you back inside.", 2, 1);
+
         print_message("...", 1, 1);
 
         print_message("You can see the city infront of, and below you", 2, 1);
