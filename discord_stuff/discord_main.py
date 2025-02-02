@@ -30,16 +30,6 @@ REPORT_FEED = 1328539570895061093
 BITRATE = 64000
 # -------------------------------
 
-# Load JTC_VC_ID from file-----
-if os.path.exists('jtc_vc_id.txt'):
-    with open('jtc_vc_id.txt', 'r') as f:
-        JTC_VC_ID = f.readlines()
-else:
-    with open('jtc_vc_id.txt', 'w') as f:
-        f.write('1335453203910627391')
-# -------------------------------
-
-
 # Variables ----------------------
 
 # Magic numbers ---------------------------------
@@ -338,7 +328,8 @@ async def on_ready():
 
     rss_feed.start()
     qlogging.start()
-    rss_feed_sog.start()
+    load_vc_list.start()
+    rss_feed_yt.start()
     daily_msg_count.start()
     system_usage_stats.start()
     check_empty_voice_channels.start()
@@ -369,6 +360,18 @@ async def on_voice_state_update(member, before, after):
 # ---------------------------------------------------------------------------
 
 
+# Voice channel list loader ------------------------------------------------
+@tasks.loop(hours=24)
+async def load_vc_list():
+    if os.path.exists('jtc_vc_id.txt'):
+        with open('jtc_vc_id.txt', 'r') as f:
+            JTC_VC_ID = f.readlines()
+    else:
+        with open('jtc_vc_id.txt', 'w') as f:
+            f.write('1335453203910627391')
+# ---------------------------------------------------------------------------
+
+
 # System Usage --------------------------------------------------------------
 @tasks.loop(hours=system_feed_time)
 async def system_usage_stats():
@@ -385,7 +388,7 @@ async def system_usage_stats():
 
 # rss youtube feed ----------------------------------------------------------
 @tasks.loop(hours=yt_feed_time)
-async def rss_feed_sog():
+async def rss_feed_yt():
 
     yt_feed_list = ['UCtMVHI3AJD4Qk4hcbZnI9ZQ', 'UCeeFfhMcJa1kjtfZAGskOCA', 'UCpa-Zb0ZcQjTCPP1Dx_1M8Q', 'UCxuR5PaBjID0GDJYkJk-VaQ', 'UClFSU9_bUb4Rc6OYfTt5SPw']
     channel_list = [1324452237702856724, 1328975811713171547, 1328978727958478950, 1328979287264464987, 1329692605935779900]
