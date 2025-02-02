@@ -254,7 +254,7 @@ async def ping(inter: discord.Interaction):
 @tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
 async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
 
-    if inter.user.id != ADMIN_ID:
+    if inter.user.id not in ADMIN_ID:
         await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
         system_messages = bot.get_channel(SYSTEM_FEED)
         await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
