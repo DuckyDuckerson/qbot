@@ -66,7 +66,6 @@ async def level(inter: discord.Interaction, user: discord.User):
 async def vc_maker(inter: discord.Interaction, allow_users: discord.User):
     inter.response.defer()
 
-
     guild = inter.guild
     channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=channel.category_id)
