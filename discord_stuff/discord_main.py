@@ -22,7 +22,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1335453203910627391]
+JTC_VC_ID = [1335479611697660005]
 OWNER_ID = 927778433856061501
 ADMIN_ID = [927778433856061501]
 SYSTEM_FEED = 1328539466029072405
@@ -245,42 +245,42 @@ async def ping(inter: discord.Interaction):
 
 
 # Add Voice channel to JTC_VC_ID --------------------------------------------
-@tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
-async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
-    inter.response.defer()
-
-    if inter.user.id not in ADMIN_ID:
-        await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
-        system_messages = bot.get_channel(SYSTEM_FEED)
-        await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
-
-    else:
-        JTC_VC_ID.append(channel.id)
-
-        def read_file():
-            try:
-                with open('jtc_vc_id.txt', 'r') as f:
-                    return f.readlines()
-            except FileNotFoundError:
-                system_messages = bot.get_channel(SYSTEM_FEED)
-                await system_messages.send("File not found")
-                return []
-
-        existing_lines = await asyncio.to_thread(read_file)
-        if str(channel.id) in existing_lines:
-            def write_file():
-                with open('jtc_vc_id.txt', 'a') as f:
-                    f.write(str(channel.id) + '\n')
-
-            await asyncio.to_thread(write_file)
-            await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
-            system_messages = bot.get_channel(SYSTEM_FEED)
-            await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
-
-        else:
-            await inter.response.send_message(f"{channel.name} is already in the JTC_VC_ID list", ephemeral=True)
-            system_messages = bot.get_channel(SYSTEM_FEED)
-            await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
+#@tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
+#async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
+#    inter.response.defer()
+#
+#    if inter.user.id not in ADMIN_ID:
+#        await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
+#        system_messages = bot.get_channel(SYSTEM_FEED)
+#        await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
+#
+#    else:
+#        JTC_VC_ID.append(channel.id)
+#
+#        def read_file():
+#            try:
+#                with open('jtc_vc_id.txt', 'r') as f:
+#                    return f.readlines()
+#            except FileNotFoundError:
+#                system_messages = bot.get_channel(SYSTEM_FEED)
+#                await system_messages.send("File not found")
+#                return []
+#
+#        existing_lines = await asyncio.to_thread(read_file)
+#        if str(channel.id) in existing_lines:
+#            def write_file():
+#                with open('jtc_vc_id.txt', 'a') as f:
+#                    f.write(str(channel.id) + '\n')
+#
+#            await asyncio.to_thread(write_file)
+#            await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
+#            system_messages = bot.get_channel(SYSTEM_FEED)
+#            await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
+#
+#        else:
+#            await inter.response.send_message(f"{channel.name} is already in the JTC_VC_ID list", ephemeral=True)
+#            system_messages = bot.get_channel(SYSTEM_FEED)
+#            await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
 # ---------------------------------------------------------------------------
 
 
