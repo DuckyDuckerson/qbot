@@ -327,11 +327,11 @@ async def on_ready():
     print(f'Successfully synced {len(synced_commands)} commands')
 
     load_vc_list.start()
-    #qlogging.start()
-    #system_usage_stats.start()
-    #check_empty_voice_channels.start()
-    #rss_feed.start()
-    #rss_feed_yt.start()
+    qlogging.start()
+    system_usage_stats.start()
+    check_empty_voice_channels.start()
+    rss_feed.start()
+    rss_feed_yt.start()
     #daily_msg_count.start()
 # ---------------------------------------------------------------------------
 
