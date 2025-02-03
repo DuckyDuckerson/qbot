@@ -64,9 +64,8 @@ async def level(inter: discord.Interaction, user: discord.User):
 # XP Command ---------------------------------------------------------------
 @tree.command(name="vcmaker", description="Creates a private voice channel, and add one user. Use VC perms to add more.")
 async def vc_maker(inter: discord.Interaction, allow_users: discord.User):
+    inter.response.defer()
 
-    system_messages = bot.get_channel(SYSTEM_FEED)
-    await system_messages.send(f"User: {inter.user.name} used the command 'vcmaker' to create a voice channel and allowed {allow_users.name}")
 
     guild = inter.guild
     channel = bot.get_channel(JTC_VC_ID)
@@ -83,6 +82,9 @@ async def vc_maker(inter: discord.Interaction, allow_users: discord.User):
                                      category=category, overwrites=overwrites)
 
     await inter.response.send_message("Voice channel created", ephemeral=True)
+
+    system_messages = bot.get_channel(SYSTEM_FEED)
+    await system_messages.send(f"User: {inter.user.name} used the command 'vcmaker' to create a voice channel and allowed {allow_users.name}")
 # ----------------------------------------------------------------------------
 
 
