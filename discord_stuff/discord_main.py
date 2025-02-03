@@ -22,7 +22,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1335479611697660005]
+JTC_VC_ID = [1335479611697660005, 1336105768306348175]
 OWNER_ID = 927778433856061501
 ADMIN_ID = [927778433856061501]
 SYSTEM_FEED = 1328539466029072405
