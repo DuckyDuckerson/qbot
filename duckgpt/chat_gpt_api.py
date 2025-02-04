@@ -9,7 +9,7 @@ dotenv.load_dotenv()
 client = openai.Client(api_key=os.getenv("api_key"))
 
 
-def response_getter(channel_id):
+def response_getter():
 
     usr_message_joined = ""
     for m in usr_messages:
