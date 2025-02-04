@@ -536,7 +536,7 @@ async def on_message(message):
 {xp_points}xp")
 
         if "quack" in message.content.lower() or bot.user.mentioned_in(message):
-            await message.reply(response_getter(channel_id))
+            await message.reply(response_getter())
 # ---------------------------------------------------------------------------
 
 
