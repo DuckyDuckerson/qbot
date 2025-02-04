@@ -3,7 +3,6 @@ import os
 import dotenv
 
 from database.messages.disc_messages import messages as usr_messages
-from database.messages.disc_messages import channelid as usr_channelid
 
 dotenv.load_dotenv()
 client = openai.Client(api_key=os.getenv("api_key"))

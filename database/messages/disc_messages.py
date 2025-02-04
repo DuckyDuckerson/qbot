@@ -7,8 +7,8 @@ user_names = []
 user_ids = []
 time_stamps = []
 msg_count = []
-channelid = []
-context = 20
+channel_ids = []
+context = 50
 # ---------------------------------------------------------------
 
 
@@ -58,9 +58,9 @@ def context_messages(time):
 #        return int(msg_avg)
 
 
-def add_message(message, user_name, user_id, time_stamp, channelid):
+def add_message(message, user_name, user_id, time_stamp):
     messages.append(f'{user_name}: {message}\n')
     user_names.append(user_name)
     user_ids.append(user_id)
     time_stamps.append(time_stamp)
-    channelid.append(channelid)
+    #channel_ids.append(channel_id)
