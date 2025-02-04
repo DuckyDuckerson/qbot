@@ -22,7 +22,7 @@ from duckgpt.chat_gpt_api import response_getter
 dotenv.load_dotenv()
 # -------------------------------
 TOKEN = os.getenv("TOKEN")
-JTC_VC_ID = [1335479611697660005, 1336105768306348175]
+JTC_VC_ID = [1335479611697660005, 1336105768306348175, 1292159828717994099, 1269338723359916085]
 OWNER_ID = 927778433856061501
 ADMIN_ID = [927778433856061501]
 SYSTEM_FEED = 1328539466029072405
@@ -67,7 +67,6 @@ async def vc_maker(inter: discord.Interaction):
     inter.response.defer()
 
     guild = inter.guild
-    #channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=inter.channel.category_id)
     guild = inter.guild
     user = inter.user
@@ -520,7 +519,7 @@ async def qlogging():
 @bot.event
 async def on_message(message):
     add_message(message.content, message.author.name,
-                message.author.id, message.created_at)
+                message.author.id, message.created_at, message.channel.id)
 
     xp_calculator(message.content, message.author.id)
 
@@ -536,7 +535,7 @@ async def on_message(message):
 {xp_points}xp")
 
         if "quack" in message.content.lower() or bot.user.mentioned_in(message):
-            await message.reply(response_getter())
+            await message.reply(response_getter(message.channel.id))
 # ---------------------------------------------------------------------------
 
 
