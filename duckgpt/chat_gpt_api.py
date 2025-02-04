@@ -9,11 +9,16 @@ dotenv.load_dotenv()
 client = openai.Client(api_key=os.getenv("api_key"))
 
 
-def response_getter():
+def response_getter(channel_id):
 
     usr_message_joined = ""
-    for m in usr_messages:
-        usr_message_joined += m
+    for messages, channel in zip(usr_messages, usr_channelid):
+        if channel == channel_id:
+            for m in messages:
+                usr_message_joined += m
+
+    #for m in usr_messages:
+    #    usr_message_joined += m
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",

@@ -518,6 +518,7 @@ async def qlogging():
 # On Message ----------------------------------------------------------------
 @bot.event
 async def on_message(message):
+    channel_id = message.channel.id
     add_message(message.content, message.author.name,
                 message.author.id, message.created_at, message.channel.id)
 
@@ -535,7 +536,7 @@ async def on_message(message):
 {xp_points}xp")
 
         if "quack" in message.content.lower() or bot.user.mentioned_in(message):
-            await message.reply(response_getter())
+            await message.reply(response_getter(channel_id))
 # ---------------------------------------------------------------------------
 
 
