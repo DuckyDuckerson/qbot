@@ -518,9 +518,8 @@ async def qlogging():
 # On Message ----------------------------------------------------------------
 @bot.event
 async def on_message(message):
-    channel_id = message.channel.id
     add_message(message.content, message.author.name,
-                message.author.id, message.created_at, message.channel.id)
+                message.author.id, message.created_at)
 
     xp_calculator(message.content, message.author.id)
 
