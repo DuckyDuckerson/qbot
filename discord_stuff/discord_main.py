@@ -67,8 +67,8 @@ async def vc_maker(inter: discord.Interaction):
     inter.response.defer()
 
     guild = inter.guild
-    channel = bot.get_channel(JTC_VC_ID)
-    category = discord.utils.get(guild.categories, id=channel.category_id)
+    #channel = bot.get_channel(JTC_VC_ID)
+    category = discord.utils.get(guild.categories, id=inter.channel.category_id)
     guild = inter.guild
     user = inter.user
     overwrites = {
