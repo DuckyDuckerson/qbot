@@ -12,9 +12,8 @@ client = openai.Client(api_key=os.getenv("api_key"))
 def response_getter(channel_id):
 
     usr_message_joined = ""
-    for usr_message, usr_channel in zip(usr_messages, usr_channelid):
-        if usr_channel == channel_id:
-            usr_message_joined += "".join(usr_message)  # Join the individual messages
+    for m in usr_messages:
+        usr_message_joined += m
 
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
