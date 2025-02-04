@@ -536,7 +536,6 @@ async def on_message(message):
 
         if "quack" in message.content.lower() or bot.user.mentioned_in(message):
             #await message.reply(response_getter())
-            await message.reply("Quack")
 # ---------------------------------------------------------------------------
 
 
