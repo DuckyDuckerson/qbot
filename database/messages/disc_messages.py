@@ -8,7 +8,7 @@ user_ids = []
 time_stamps = []
 msg_count = []
 channel_ids = []
-context = 50
+context = 100
 # ---------------------------------------------------------------
 
 
@@ -20,7 +20,7 @@ def list_pop():
 
 
 def context_messages(time):
-    context = 50
+    context = 100
     return context
 #    total = 0
 #
@@ -58,9 +58,9 @@ def context_messages(time):
 #        return int(msg_avg)
 
 
-def add_message(message, user_name, user_id, time_stamp):
+def add_message(message, user_name, user_id, time_stamp, channel_id):
     messages.append(f'{user_name}: {message}\n')
     user_names.append(user_name)
     user_ids.append(user_id)
     time_stamps.append(time_stamp)
-    #channel_ids.append(channel_id)
+    channel_ids.append(channel_id)
