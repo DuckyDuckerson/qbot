@@ -27,7 +27,7 @@ def response_getter():
     usr_message_joined = ""
 
     for message, cid in zip(usr_messages, channel_ids):
-        if cid == 1:
+        if cid == channel_ids[-1]:
             usr_message_joined += message + " "
 
     completion = client.chat.completions.create(
