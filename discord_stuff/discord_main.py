@@ -44,7 +44,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix="!", intents=intents)
 tree = bot.tree
 start_time = f'{time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())}'
-# --------------------------------
+# -----------------------------------------------
 
 
 # Level Command ------------------------------------------------------------
