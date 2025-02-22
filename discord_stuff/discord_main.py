@@ -518,16 +518,29 @@ async def qlogging():
 # On Message ----------------------------------------------------------------
 @bot.event
 async def on_message(message):
-    add_message(message.content, message.author.name,
+    guild = await bot.fetch_guild(message.guild.id)
+    member = await guild.fetch_member(message.author.id)
+
+    if member.nick == "None" or member.nick is None:
+        if message.author.global_name is None:
+            nickname = message.author.name
+        else:
+            nickname = message.author.global_name
+            if nickname == "None":
+                nickname = message.author.name
+    else:
+        nickname = member.nick
+
+    add_message(message.content, nickname,
                 message.author.id, message.created_at, message.channel.id)
 
-    xp_calculator(message.content, message.author.id)
+    xp_calculator(message.content, nickname)
 
     if message.author == bot.user:
         return
 
     else:
-        if xp_check(message.author.id, message.author.name) is True:
+        if xp_check(message.author.id, nickname) is True:
             xp_points = xp_to_file(message.author.id)
             xp_points = "{:,}".format(xp_points)
 
