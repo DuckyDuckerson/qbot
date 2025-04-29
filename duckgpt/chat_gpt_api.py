@@ -23,6 +23,44 @@ def personality(usr_message):
     return personality
 
 
+def summeriser():
+    usr_message_joined = ""
+
+    for message, cid in zip(usr_messages, channel_ids):
+        if cid == channel_ids[-1]:
+            usr_message_joined += message + " "
+    prompt = "Generate a summary of the conversation."
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": usr_message_joined},
+        ],
+    )
+    personality = completion.choices[0].message.content
+    return personality
+
+
+def event_handler():
+    usr_message_joined = ""
+
+    for message, cid in zip(usr_messages, channel_ids):
+        if cid == channel_ids[-1]:
+            usr_message_joined += message + " "
+
+    prompt = "Create an event based on the conversation."
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": prompt},
+            {"role": "user", "content": usr_message_joined},
+        ],
+    )
+
+    personality = completion.choices[0].message.content
+    return personality
+
+
 def response_getter():
     usr_message_joined = ""
 
