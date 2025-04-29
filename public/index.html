@@ -207,7 +207,87 @@
             </div>
         </section>
     </main>
-    <iframe src="https://discord.com/widget?id=1104991679716532234&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
+
+<head>
+  <style>
+    .discord-widget {
+      width: 350px;
+      padding: 15px;
+      background: #2c2f33;
+      color: #ffffff;
+      border-radius: 10px;
+      font-family: sans-serif;
+    }
+    .discord-widget h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .member {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .member img {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 32px;
+      height: 32px;
+    }
+    .invite {
+      margin-top: 15px;
+      display: block;
+      padding: 10px;
+      text-align: center;
+      background: #7289da;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="discord-widget" id="discord-widget">
+  <h2>Loading server info...</h2>
+</div>
+
+<script>
+const serverID = '1104991679716532234';
+const inviteLink = 'https://discord.gg/YOURINVITECODE'; // replace with your real invite
+
+fetch(`https://discord.com/api/guilds/${serverID}/widget.json`)
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('discord-widget');
+    container.innerHTML = `
+      <h2>${data.name}</h2>
+      <p>Online Members: ${data.presence_count}</p>
+      ${data.members.slice(0, 5).map(m => `
+        <div class="member">
+          <img src="${m.avatar_url}" />
+          <span>${m.username}</span>
+        </div>
+      `).join('')}
+      <a class="invite" href="${data.instant_invite}" target="_blank">Join Server</a>
+    `;
+  })
+  .catch(() => {
+    document.getElementById('discord-widget').innerHTML = '<p>Unable to load server info.</p>';
+  });
+</script>
+
+</body>
+
+    <iframe 
+    src="https://discord.com/widget?id=1104991679716532234&theme=dark" 
+    width="350" 
+    height="500" 
+    style="border: none; border-radius: 10px; overflow: hidden;" 
+    allowtransparency="true" 
+    frameborder="0" 
+    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+    </iframe>
 
     <footer>
         <p>Connect with me:</p>
