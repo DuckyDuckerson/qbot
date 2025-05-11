@@ -23,7 +23,10 @@ if [ $choice -eq 1 ]; then
     docker ps -aq | xargs docker stop | xargs docker rm
     docker build -t qbot .
     #docker run --restart=always -v "$(pwd):/qbot" -i qbot
+    echo "Starting qbot..."
     docker run --restart=always -v "$(pwd):/qbot" -d -p 80:80 -p 8080:8080 -p 443:443 qbot
+
+    echo "Starting ntfy..."
     docker run -p 8081:8081 -v $(pwd)/ntfy:/etc/ntfy ghcr.io/binwiederhier/ntfy
 else
     echo "Killing all running containers..."
