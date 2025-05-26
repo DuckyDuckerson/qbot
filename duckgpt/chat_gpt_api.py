@@ -61,6 +61,19 @@ def event_handler():
     return personality
 
 
+def response_checker(response, usr_message):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user", "content": usr_message},
+            {"role": "assistant", "content": response},
+            {"role": "system", "content": "Make the message shorter more funny and concise."},
+        ],
+    )
+
+    return completion.choices[0].message.content
+
+
 def response_getter():
     usr_message_joined = ""
 
@@ -86,4 +99,8 @@ def response_getter():
         ],
     )
 
-    return completion.choices[0].message.content
+    response = completion.choices[0].message.content
+
+    # response_checker(response, usr_message_joined)
+
+    return response_checker(response, usr_message_joined)
