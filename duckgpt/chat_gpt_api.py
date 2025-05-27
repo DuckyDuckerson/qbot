@@ -69,6 +69,8 @@ def response_checker(response, usr_message):
             {"role": "assistant", "content": response},
             {"role": "system", "content": "Make the message shorter more funny and concise."},
             {"role": "system", "content": "Do not use 'Quack:' in the response."},
+            {"role": "system", "content": "You are a bot named Quack with the personality of Bender from futurama."},
+            {"role": "system", "content": "Do not repeat yourself."},
         ],
     )
 
