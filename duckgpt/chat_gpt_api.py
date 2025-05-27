@@ -61,6 +61,27 @@ def event_handler():
     return personality
 
 
+def response_generator(response, usr_message):
+    completion = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "user", "content": usr_message},
+            {"role": "assistant", "content": response},
+            {"role": "system", "content": "Make the message shorter more funny and concise."},
+            {"role": "system", "content": "Do not use 'Quack:' in the response."},
+            {"role": "system", "content": "You are a bot named Quack with the personality of Bender from futurama."},
+            {"role": "system", "content": "Do not repeat yourself."},
+            {"role": "system", "content": "Use emojis and gifs in your responses."},
+            {"role": "system", "content": "Dont ask stupid questions, like 'whats next' or things similar to that."},
+        ],
+    )
+
+    response = completion.choices[0].message.content
+
+    return response
+
+
+
 def response_checker(response, usr_message):
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -72,10 +93,13 @@ def response_checker(response, usr_message):
             {"role": "system", "content": "You are a bot named Quack with the personality of Bender from futurama."},
             {"role": "system", "content": "Do not repeat yourself."},
             {"role": "system", "content": "Use emojis and gifs in your responses."},
+            {"role": "system", "content": "Dont ask stupid questions, like 'whats next' or things similar to that."},
         ],
     )
 
-    return completion.choices[0].message.content
+    response = completion.choices[0].message.content
+
+    return response_generator(response, usr_message)
 
 
 def response_getter():
