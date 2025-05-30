@@ -60,7 +60,10 @@ def event_handler():
     personality = completion.choices[0].message.content
     return personality
 
+# Yeah Ill be fixing this later, I guess
 
+# This is number 3 in the chain response getter -> response_checker -> response_generator
+# this is terrible code, I know, but it works for now
 def response_generator(response, usr_message):
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
@@ -127,7 +130,5 @@ def response_getter():
     )
 
     response = completion.choices[0].message.content
-
-    # response_checker(response, usr_message_joined)
 
     return response_checker(response, usr_message_joined)
