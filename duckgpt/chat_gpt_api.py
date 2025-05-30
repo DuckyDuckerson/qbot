@@ -60,8 +60,8 @@ def event_handler():
     personality = completion.choices[0].message.content
     return personality
 
-# Yeah Ill be fixing this later, I guess
 
+# Yeah Ill be fixing this later, I guess
 # This is number 3 in the chain response getter -> response_checker -> response_generator
 # this is terrible code, I know, but it works for now
 def response_generator(response, usr_message):
