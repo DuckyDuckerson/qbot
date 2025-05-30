@@ -81,7 +81,6 @@ def response_generator(response, usr_message):
     return response
 
 
-
 def response_checker(response, usr_message):
     completion = client.chat.completions.create(
         model="gpt-4o-mini",
