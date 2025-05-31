@@ -1,7 +1,6 @@
 import openai
 import os
 import dotenv
-
 from database.messages.disc_messages import messages as usr_messages
 from database.messages.disc_messages import channel_ids as channel_ids
 
