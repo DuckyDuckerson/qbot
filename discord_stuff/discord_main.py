@@ -7,7 +7,7 @@ import dotenv
 import os
 import feedparser
 import psutil
-import asyncio
+# import asyncio
 # ----------------------------------------------
 from database.messages.disc_messages import add_message, context_messages
 from database.xp import xp_calculator, xp_to_file, xp_check
@@ -243,47 +243,6 @@ async def ping(inter: discord.Interaction):
 # ---------------------------------------------------------------------------
 
 
-# Add Voice channel to JTC_VC_ID --------------------------------------------
-#@tree.command(name="jtc", description="Adds a voice channel to the JTC_VC_ID list.")
-#async def jtc_vc(inter: discord.Interaction, channel: discord.VoiceChannel):
-#    inter.response.defer()
-#
-#    if inter.user.id not in ADMIN_ID:
-#        await inter.response.send_message("You must be an admin to use this command", ephemeral=True)
-#        system_messages = bot.get_channel(SYSTEM_FEED)
-#        await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
-#
-#    else:
-#        JTC_VC_ID.append(channel.id)
-#
-#        def read_file():
-#            try:
-#                with open('jtc_vc_id.txt', 'r') as f:
-#                    return f.readlines()
-#            except FileNotFoundError:
-#                system_messages = bot.get_channel(SYSTEM_FEED)
-#                await system_messages.send("File not found")
-#                return []
-#
-#        existing_lines = await asyncio.to_thread(read_file)
-#        if str(channel.id) in existing_lines:
-#            def write_file():
-#                with open('jtc_vc_id.txt', 'a') as f:
-#                    f.write(str(channel.id) + '\n')
-#
-#            await asyncio.to_thread(write_file)
-#            await inter.response.send_message(f"Added {channel.name} to the JTC_VC_ID list", ephemeral=True)
-#            system_messages = bot.get_channel(SYSTEM_FEED)
-#            await system_messages.send(f"User: {inter.user.name} used the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
-#
-#        else:
-#            await inter.response.send_message(f"{channel.name} is already in the JTC_VC_ID list", ephemeral=True)
-#            system_messages = bot.get_channel(SYSTEM_FEED)
-#            await system_messages.send(f"User: {inter.user.name} TRIED to use the command 'jtc' to add {channel.name} to the JTC_VC_ID list")
-# ---------------------------------------------------------------------------
-
-
-
 # Command to sync commands --------------------------------------------------
 @tree.command(name='sync', description='syncs commands')
 async def sync_commands(inter: discord.Interaction):
@@ -326,12 +285,11 @@ async def on_ready():
     print(f'Successfully synced {len(synced_commands)} commands')
 
     system_usage_stats.start()
-    load_vc_list.start()
     qlogging.start()
     check_empty_voice_channels.start()
     rss_feed.start()
     rss_feed_yt.start()
-    #daily_msg_count.start()
+    # daily_msg_count.start()
 # ---------------------------------------------------------------------------
 
 
@@ -339,7 +297,7 @@ async def on_ready():
 @bot.event
 async def on_voice_state_update(member, before, after):
     guild = member.guild
-    #channel = bot.get_channel(JTC_VC_ID)
+    # channel = bot.get_channel(JTC_VC_ID)
     category = discord.utils.get(guild.categories, id=after.channel.category_id)
 
     if after.channel is not None and after.channel.id in JTC_VC_ID:
@@ -356,18 +314,6 @@ async def on_voice_state_update(member, before, after):
 
     else:
         pass
-# ---------------------------------------------------------------------------
-
-
-# Voice channel list loader ------------------------------------------------
-@tasks.loop(hours=24)
-async def load_vc_list():
-    if os.path.exists('jtc_vc_id.txt'):
-        with open('jtc_vc_id.txt', 'r') as f:
-            JTC_VC_ID = f.readlines()
-    else:
-        with open('jtc_vc_id.txt', 'w') as f:
-            f.write('1335453203910627391')
 # ---------------------------------------------------------------------------
 
 
