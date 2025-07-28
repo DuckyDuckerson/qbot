@@ -7,3 +7,4 @@ testing/server.c
 server/index.html
 server/index.html
 server/index.html
+public/.DS_Store
