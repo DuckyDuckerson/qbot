@@ -228,13 +228,26 @@
 
         </section>
 
-        <div class="box">
-            .container {
+        <!-- HTML -->
+        <div class="container">
+          <div class="box">Div 1</div>
+          <div class="box">Div 2</div>
+          <div class="box">Div 3</div>
+        </div>
+        
+        <!-- CSS -->
+        <style>
+          .container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            }
-        </div>
+            gap: 20px; /* adds space between the boxes */
+          }
+        
+          .box {
+            background: #ccc;
+            padding: 10px;
+          }
+        </style>
 
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
