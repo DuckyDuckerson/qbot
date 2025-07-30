@@ -228,10 +228,23 @@
 
 
 
-        <iframe 
-          src="https://calendar.google.com/calendar/embed?src=your_calendar_id&ctz=America%2FPhoenix"
-          style="border: 0" width="800" height="600" frameborder="0" scrolling="no">
-        </iframe>
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+        
+        <div id="calendar"></div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+              initialView: 'dayGridMonth',
+              events: [
+                { title: 'Release Day', start: '2025-08-05' },
+                { title: 'Show', start: '2025-08-12' }
+              ]
+            });
+            calendar.render();
+          });
+        </script>
+
         </section>
     </main>
 
