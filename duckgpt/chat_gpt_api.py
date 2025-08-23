@@ -80,7 +80,7 @@ def response_generator(response, usr_message):
 
     response = completion.choices[0].message.content
 
-    return response
+    #return response
 
 
 def response_checker(response, usr_message):
@@ -100,7 +100,8 @@ def response_checker(response, usr_message):
 
     response = completion.choices[0].message.content
 
-    return response_generator(response, usr_message)
+    #return response_generator(response, usr_message)
+    return response
 
 
 def response_getter():
