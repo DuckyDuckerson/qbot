@@ -1,0 +1,6 @@
+167.82.4.223 - - [04/Sep/2025:20:55:03 +0000] "GET / HTTP/1.1" 200 4342 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
+167.82.4.223 - - [04/Sep/2025:20:55:04 +0000] "GET /mixed_songs/CT_demo.mp3 HTTP/1.1" 206 7002212 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
+167.82.4.223 - - [04/Sep/2025:20:55:04 +0000] "GET /mixed_songs/SH_demo.mp3 HTTP/1.1" 206 6730048 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
+167.82.4.223 - - [04/Sep/2025:20:55:04 +0000] "GET /mixed_songs/Ether_demo.mp3 HTTP/1.1" 206 7499101 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
+167.82.4.223 - - [04/Sep/2025:20:55:04 +0000] "GET /favicon.ico HTTP/1.1" 404 487 "http://localhost/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
+192.168.65.1 - - [04/Sep/2025:20:55:26 +0000] "GET / HTTP/1.1" 200 4342 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:142.0) Gecko/20100101 Firefox/142.0"
