@@ -52,3 +52,5 @@ case "${choice}" in
         echo "Invalid choice. Please run the script again and select a valid option."
         exit 1
         ;;
+esac
+echo "Done."
